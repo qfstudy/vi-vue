@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>vue-view</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .button{
+      margin: 5px 2px;
+    }
+
+    /* .ss{
+      background: red;
+    }
+    .ss>span{
+      color: black;
+      display: inline-block;
+      padding: 1em 2em;
+      
+    }
+    .vi-button-primary>span{
+      display: inline-block;
+      padding: 3em 2em;
+      color: black;
+    } */
+  </style>
+</head>
+
+<body>
+    <svg class="g-icon">
+        <use href="www.baidu.com"></use>
+        <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red" />
+    </svg> 
+  <div id="app">
+      
+    <div class="button">
+
+      <vi-button class="ss"><span>默认按钮</span></vi-button>
+      <vi-button type="primary"><span>主要按钮</span></vi-button>
+      <vi-button type="success"><span>成功按钮</span></vi-button>
+      <vi-button type="info"><span>信息按钮</span></vi-button>
+      <vi-button type="warning"><span>警告按钮</span></vi-button>
+      <vi-button type="danger"><span>危险按钮</span></vi-button>
+    </div>
+    <div class="icon">
+      <vi-icon>ss</vi-icon>
+    </div>
+  </div>
+</body>
+
+</html>
