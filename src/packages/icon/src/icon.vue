@@ -1,12 +1,14 @@
 <template>
-    <span class="vi-icon">
-        <slot></slot>
-    </span>
+    <svg class="g-icon">
+        <use :xlink:href="`#vi-${name}`"></use>
+    </svg> 
 </template>
 
 <script>
+import '../../components/svg'
 export default {
-    name:'ViIcon'
+    name:'ViIcon',
+    props:['name']
 }
 </script>
 

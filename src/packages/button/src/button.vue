@@ -1,6 +1,8 @@
 <template>
-    <button class="vi-button" :class="['vi-button-'+type]">
-        <slot></slot>
+    <button class="vi-button" :class="['i-button-'+type]">
+        <div>
+            <slot></slot>
+        </div>
     </button>
 </template>
 
