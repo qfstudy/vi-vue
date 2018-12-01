@@ -1,7 +1,7 @@
 <template>
-    <button class="vi-button" :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition]">
-        <span class="vi-button-icon">
-            <vi-icon v-if="iconName" :name="iconName" :size="iconSize"></vi-icon>
+    <button class="vi-button" :disabled=disabled :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition,circle&&'vi-button-'+circle,disabled&&'vi-button-'+disabled]">
+        <span v-if="iconName" class="vi-button-icon">
+            <vi-icon :name="iconName" :size="iconSize"></vi-icon>
         </span>
         <span class="vi-button-content">
             <slot></slot>
@@ -46,10 +46,16 @@ export default {
                     'right'
                 ].indexOf(value)>-1
             }
+        },
+        circle:{
+            type: String
+        },
+        disabled:{
+            type: String,
         }
     },
     mounted () {
-      console.log(this.$props)  
+      console.log(this.$props.circle)  
     }
 }
 </script>
@@ -62,13 +68,17 @@ export default {
         outline: none;
         border: 1px solid rgb(220, 222, 226);
         border-radius: 5px;
-        padding: 0.5em 0.5em;
+        padding: 0.3em 0.3em;
         cursor: pointer;
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
-         justify-content: center;
+        justify-content: center;
         vertical-align: top;
+        &>span>*{
+            display: inline-block;
+            vertical-align: top;
+        }
         &.vi-button-primary{
             background-color: #2d8cf0;
             border-color: #2d8cf0;
@@ -96,6 +106,30 @@ export default {
         }
         &:hover{
             opacity: 0.8;
+        }
+        &.vi-button-right{
+            > .vi-button-icon{
+                order: 2;
+            }
+            > .vi-button-content{
+                order: 1;
+            }
+        }
+        &.vi-button-left{
+             > .vi-button-icon{
+                order: 1;
+            }
+            > .vi-button-content{
+                order: 2;
+            }
+        }
+        &.vi-button-circle{
+            padding: 0;
+            margin: 0;
+            border-radius: 50%;
+        }
+        &.vi-button-disabled{
+            cursor: not-allowed;
         }
     }
 </style>

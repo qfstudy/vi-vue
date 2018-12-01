@@ -16,20 +16,36 @@
       margin: 5px 2px;
       /* display: inline-flex; */
     }
+    .test .icon{
+      /* display: inline-block; */
+      width: 5em;
+      height: 2em;
+    }
+    
 
   </style>
 </head>
 
 <body>
   <div id="app">
-      
     <div class="button">
       <vi-button icon-name="setting" icon-position="right"><span>默认按钮</span></vi-button>
       <vi-button type="primary" icon-name="search"><span>主要按钮</span></vi-button>
       <vi-button type="success" icon-name="loading" icon-size="medium"><span>成功按钮</span></vi-button>
-      <vi-button type="info" icon-name="loading" icon-size="large"><span>信息按钮</span></vi-button>
-      <vi-button type="warning"><span>警告按钮</span></vi-button>
-      <vi-button type="danger"><span>危险按钮</span></vi-button>
+      <vi-button type="info" icon-name="loading" icon-size="large" icon-position="right"><span>信息按钮</span></vi-button>
+      <vi-button type="warning" circle><span>警告按钮</span></vi-button>
+      <vi-button type="danger" disabled="disabled"></spa>危险按钮</span></vi-button>
+      <br>
+      <vi-button icon-size="small" icon-name="setting" circle="circle"><span></span></vi-button>
+      <vi-button icon-size="medium" icon-name="upload" circle="circle"><span></span></vi-button>
+      <vi-button icon-size="small" icon-name="left" circle="circle"><span></span></vi-button>
+      <!-- 图标按钮 -->
+      <br>
+      <vi-button class="test"><span ></span><vi-icon class="icon" name="loading"></vi-icon></span></vi-button>
+      <vi-button type="primary" icon-name="search"></vi-button>
+      <vi-button type="success" icon-name="loading" ></vi-button>
+      <vi-button type="info" icon-name="loading" icon-size="large" ></vi-button>
+      <vi-button type="warning" icon-name="upload"></vi-button>
     </div>
     <!-- <div class="icon">
       <vi-icon name="loading"></vi-icon>
