@@ -1,5 +1,6 @@
 import Vue from 'vue'
 Vue.config.productionTip = false
+import './packages/components/svg'
 
 import Button from './packages/button/src/button'
 import Icon from './packages/icon/src/icon'

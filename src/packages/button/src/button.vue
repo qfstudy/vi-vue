@@ -1,8 +1,11 @@
 <template>
-    <button class="vi-button" :class="['i-button-'+type]">
-        <div>
+    <button class="vi-button" :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition]">
+        <span class="vi-button-icon">
+            <vi-icon v-if="iconName" :name="iconName" :size="iconSize"></vi-icon>
+        </span>
+        <span class="vi-button-content">
             <slot></slot>
-        </div>
+        </span>
     </button>
 </template>
 
@@ -12,7 +15,7 @@ export default {
     props:{
         type:{
             type: String,
-            default:'default',
+            // default:'default',
             validator (value) {
                 return [
                     'default',
@@ -23,7 +26,30 @@ export default {
                     'danger'
                 ].indexOf(value)>-1;
             }
+        },
+        iconName:{
+            type:String,
+        },
+        // isIcon:{
+        //     type:String,
+        // },
+        iconSize:{
+            type:String,
+            default:'small'
+        },
+        iconPosition:{
+            type: String,
+            // default: 'left',
+            validator(value){
+                return[
+                    'left',
+                    'right'
+                ].indexOf(value)>-1
+            }
         }
+    },
+    mounted () {
+      console.log(this.$props)  
     }
 }
 </script>
@@ -38,6 +64,11 @@ export default {
         border-radius: 5px;
         padding: 0.5em 0.5em;
         cursor: pointer;
+        white-space: nowrap;
+        display: inline-flex;
+        align-items: center;
+         justify-content: center;
+        vertical-align: top;
         &.vi-button-primary{
             background-color: #2d8cf0;
             border-color: #2d8cf0;
