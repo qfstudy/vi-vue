@@ -21,15 +21,27 @@
       width: 5em;
       height: 2em;
     }
-    
+    .ss>.ff{
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: red;
+    }
+    .sd>.jj{
+      width: 1px;
+      height: 1px;
+      /* background: red; */
+      fill:red;
+    }
 
   </style>
 </head>
 
 <body>
   <div id="app">
+
     <div class="button">
-      <vi-button icon-name="setting" icon-position="right"><span>默认按钮</span></vi-button>
+      <vi-button :icon-name="'setting'" icon-position="right"><span>默认按钮</span></vi-button>
       <vi-button type="primary" icon-name="search"><span>主要按钮</span></vi-button>
       <vi-button type="success" icon-name="loading" icon-size="medium"><span>成功按钮</span></vi-button>
       <vi-button type="info" icon-name="loading" icon-size="large" icon-position="right"><span>信息按钮</span></vi-button>
@@ -41,17 +53,17 @@
       <vi-button icon-size="small" icon-name="left" circle="circle"><span></span></vi-button>
       <!-- 图标按钮 -->
       <br>
-      <vi-button class="test"><span ></span><vi-icon class="icon" name="loading"></vi-icon></span></vi-button>
+      <vi-button class="test"><vi-icon class="icon" vi-icon-name="setting"></vi-icon></vi-button>
       <vi-button type="primary" icon-name="search"></vi-button>
       <vi-button type="success" icon-name="loading" ></vi-button>
       <vi-button type="info" icon-name="loading" icon-size="large" ></vi-button>
       <vi-button type="warning" icon-name="upload"></vi-button>
     </div>
-    <!-- <div class="icon">
-      <vi-icon name="loading"></vi-icon>
-      <vi-icon name="setting" size="small"></vi-icon>
-      <vi-icon name="search" size="large"></vi-icon>
-    </div> -->
+    <div class="icon">
+      <div class="ss"><vi-icon class="ff" vi-icon-name="loading"></vi-icon></div>
+      <div class="sd"><vi-icon class="jj" vi-icon-name="setting" vi-icon-size="small"></vi-icon></div>
+      <vi-icon vi-icon-name="search" vi-icon-size="large"></vi-icon>
+    </div>
   </div>
 </body>
 

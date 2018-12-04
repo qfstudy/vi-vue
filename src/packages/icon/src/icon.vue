@@ -1,6 +1,6 @@
 <template>
-    <svg class="vi-icon" :class="`vi-icon-${size}`">
-        <use :xlink:href="`#vi-${name}`"></use>
+    <svg class="vi-icon" :class="`vi-icon-${viIconSize}`">
+        <use :xlink:href="`#vi-${viIconName}`"></use>
     </svg> 
 </template>
 
@@ -8,8 +8,10 @@
 export default {
     name:'ViIcon',
     props:{
-        name:'',
-        size:{
+        viIconName:{
+            type: String
+        },
+        viIconSize:{
             type: String,
             default: 'default',
             validator(value){
@@ -21,7 +23,10 @@ export default {
                 ].indexOf(value)>-1
             }
         }
-    }
+    },
+    // mounted(){
+    //     console.log(this.$props.name)
+    // }
 }
 </script>
 

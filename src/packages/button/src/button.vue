@@ -1,7 +1,7 @@
 <template>
     <button class="vi-button" :disabled=disabled :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition,circle&&'vi-button-'+circle,disabled&&'vi-button-'+disabled]">
         <span v-if="iconName" class="vi-button-icon">
-            <vi-icon :name="iconName" :size="iconSize"></vi-icon>
+            <vi-icon :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
         </span>
         <span class="vi-button-content">
             <slot></slot>
@@ -10,8 +10,12 @@
 </template>
 
 <script>
+import Icon from '../../icon/src/icon'
 export default {
     name: 'ViButton',
+    components:{
+        'vi-icon':Icon
+    },
     props:{
         type:{
             type: String,
@@ -54,9 +58,9 @@ export default {
             type: String,
         }
     },
-    mounted () {
-      console.log(this.$props.circle)  
-    }
+    // mounted () {
+    //   console.log(this.$props.circle)  
+    // }
 }
 </script>
 
