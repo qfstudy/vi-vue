@@ -65,22 +65,21 @@ export default {
 
 <style lang="scss" scoped>
     .vi-button{
+        border: 1px solid transparent;  //自定义边框
+        outline: none;  
         font-family:  Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
-        color: #515a6e;
-        border:1px solid none;
-        outline: none;
-        border: 1px solid rgb(220, 222, 226);
-        border-radius: 5px;
-        padding: 0.3em 0.3em;
+        border-radius: 3px;
         cursor: pointer;
+        border: 1px solid #e1e1e1;
         white-space: nowrap;
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        vertical-align: top;
-        &>span>*{
-            display: inline-block;
-            vertical-align: top;
+        vertical-align: middle;
+        .vi-button-icon>*{
+            vertical-align: middle;
+        }
+        .vi-button-content{
+            padding: 0.6em ; 
         }
         &.vi-button-primary{
             background-color: #2d8cf0;
@@ -127,6 +126,9 @@ export default {
             }
         }
         &.vi-button-circle{
+            .vi-button-content{
+                padding: 0; 
+            }
             padding: 0;
             margin: 0;
             border-radius: 50%;

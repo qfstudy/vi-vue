@@ -5,23 +5,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>vue-view</title>
-  <!-- <script src="./src/packages/components/svg.js"></script> -->
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-   /* .dd>*{
-     font-size: 22px;
-     display: inline-block;
-     padding: 10px;
-   } */
 
   </style>
 </head>
 
 <body>
+  <button type="reset">zd</button>
+  <button type="submit">sdd</button>
   <div id="app">
     <div class="icon">
       <vi-icon vi-icon-name="search"></vi-icon>
@@ -29,11 +25,33 @@
     </div>
 
     <div class="button">
-      <vi-button @click="aa">默认样式</vi-button>
-      <vi-button class="dd" type="primary" icon-name="upload" >主要按钮</vi-button>
-      <vi-button  type="primary" icon-name="upload" icon-size="medium" circle="circle"></vi-button>
+      <vi-button class="dc" @click="aa">默认样式</vi-button>
+      <vi-button type="default">默认样式</vi-button>
+      <vi-button type="primary" icon-name="upload" >主要按钮</vi-button>
+      <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle"></vi-button>
       <vi-button type="primary" icon-name="upload" icon-position="right">主要按钮</vi-button>
       <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle" disabled="disabled"></vi-button>
+    </div>
+
+    <div class="buttonGroup">
+      <vi-button-group>
+        <vi-icon class="ss" vi-icon-name="search" vi-icon-size=small></vi-icon>
+        <vi-icon class="ss" vi-icon-name="search" vi-icon-size=small></vi-icon>
+      </vi-button-group>
+      <!-- <br> -->
+      <vi-button-group>
+          <vi-button type="primary">默认样式</vi-button>
+          <vi-button type="primary">主要按钮</vi-button>
+      </vi-button-group>
+      <!-- <br> -->
+      <vi-button-group>
+          <vi-button>默认样式</vi-button>
+          <vi-button >主要按钮</vi-button>
+      </vi-button-group>
+      <vi-button-group>
+          <vi-button type="primary" icon-name="left" icon-size=small>上一页</vi-button>
+          <vi-button type="primary" icon-name="right" icon-size=small icon-position="right">下一页</vi-button>
+      </vi-button-group>
     </div>
   </div>
 </body>
