@@ -4,7 +4,7 @@ import './packages/common/svg'
 
 import Button from './packages/button/src/button'
 import Icon from './packages/icon/src/icon'
-import viButtonGroup from './packages/button/src/buttonGroup'
+import viButtonGroup from './packages/button/src/button-group'
 Vue.component('vi-button',Button)
 Vue.component('vi-icon',Icon)
 Vue.component('vi-button-group',viButtonGroup) 
