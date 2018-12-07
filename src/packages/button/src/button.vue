@@ -1,5 +1,5 @@
 <template>
-    <button class="vi-button" :disabled=disabled :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition,circle&&'vi-button-'+circle,disabled&&'vi-button-'+disabled]">
+    <button @click="handleClick" class="vi-button" :disabled=disabled :class="[type&&'vi-button-'+type,iconPosition&&'vi-button-'+iconPosition,circle&&'vi-button-'+circle,disabled&&'vi-button-'+disabled]">
         <span v-if="iconName" class="vi-button-icon">
             <vi-icon :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
         </span>
@@ -19,7 +19,7 @@ export default {
     props:{
         type:{
             type: String,
-            // default:'default',
+            default:'default',
             validator (value) {
                 return [
                     'default',
@@ -34,9 +34,6 @@ export default {
         iconName:{
             type:String,
         },
-        // isIcon:{
-        //     type:String,
-        // },
         iconSize:{
             type:String,
             default:'small'
@@ -58,9 +55,11 @@ export default {
             type: String,
         }
     },
-    // mounted () {
-    //   console.log(this.$props.circle)  
-    // }
+    methods: {
+        handleClick(event) {
+            this.$emit('click', event);
+        }
+    },
 }
 </script>
 

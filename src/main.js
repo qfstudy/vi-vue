@@ -4,9 +4,15 @@ import './packages/common/svg'
 
 import Button from './packages/button/src/button'
 import Icon from './packages/icon/src/icon'
-
+import viButtonGroup from './packages/button/src/buttonGroup'
 Vue.component('vi-button',Button)
 Vue.component('vi-icon',Icon)
+Vue.component('vi-button-group',viButtonGroup) 
 new Vue({
-  el: '#app'
+  el: '#app',
+  methods: {
+    aa(value){
+      console.log(value)
+    }
+  }
 })
