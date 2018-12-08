@@ -22,6 +22,7 @@ export default {
         vertical-align: middle;
         border: 1px solid #e1e1e1;
         border-radius: 4px;
+        cursor: pointer;
         & .vi-button{
             border-radius: 0;
             &:not(:first-child){

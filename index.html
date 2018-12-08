@@ -16,11 +16,9 @@
 </head>
 
 <body>
-  <button type="reset">zd</button>
-  <button type="submit">sdd</button>
   <div id="app">
     <div class="icon">
-      <vi-icon vi-icon-name="search"></vi-icon>
+      <vi-icon vi-icon-name="search" vi-icon-size="medium"></vi-icon>
       <vi-icon vi-icon-name="search" vi-icon-size=small>
     </div>
 
@@ -50,8 +48,16 @@
       </vi-button-group>
       <vi-button-group>
           <vi-button type="primary" icon-name="left" icon-size=small>上一页</vi-button>
+          <vi-button type="primary" icon-name="left" icon-size=small>上一页</vi-button>
           <vi-button type="primary" icon-name="right" icon-size=small icon-position="right">下一页</vi-button>
       </vi-button-group>
+    </div>
+    <hr>
+    <br>
+    <div class="input">
+        <vi-input placeholder="请输入内容" ></vi-input>
+      <vi-input placeholder="请输入内容" v-model="input1"></vi-input>
+      <vi-input disabled placeholder="禁止修改"></vi-input>
     </div>
   </div>
 </body>
