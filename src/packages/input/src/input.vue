@@ -1,19 +1,47 @@
 <template>
-    <div class="vi-input-wrapper">
+    <div 
+    class="vi-input-wrapper" 
+    :class="[{'vi-input-prefixicon':prefixIcon},{'vi-input-suffixicon':suffixIcon}]" 
+    @mouseover="handleShowIcon($event)"
+    @mouseleave="handleHideIcon($event)"
+    >
         <template>
+            <span 
+            class="vi-input-icon-wrapper" 
+            v-if="clearable&&!disabled" 
+            :class="[{'vi-input-hide':hideIcon},{'vi-input-show':showIcon}]" 
+            >
+                <vi-icon 
+                class="vi-input-icon" 
+                v-if="suffixIcon" 
+                :viIconName="suffixIcon" 
+                :viIconSize="iconSize"
+                @click="clearValue"
+                >
+                </vi-icon>
+            </span>
+            <span class="vi-input-icon-wrapper"  v-else>
+                <vi-icon 
+                class="vi-input-icon" 
+                v-if="prefixIcon||suffixIcon" 
+                :viIconName="prefixIcon||suffixIcon" 
+                :viIconSize="iconSize"
+                @click="clickIcon"
+                >
+                </vi-icon>
+            </span>
             <input 
             class="vi-input" 
             :disabled="disabled"
             :placeholder="placeholder" 
             :class="[{'vi-input-disabled':disabled}]"
             :value="currentValue"
-            @input="handleInput"
+            @input="handleInput($event)"
+            @change="changeIcon($event)"
             />
         </template>
         <template>
-            <span class="vi-input-icon" v-if="icon">
-                <vi-icon vi-icon-name="search" vi-icon-size="small"></vi-icon>
-            </span>
+           
         </template>
     </div>
 </template>
@@ -23,7 +51,9 @@ export default {
     name: 'viInput',
     data(){
         return{
-            currentValue: this.value
+            currentValue: this.value,
+            hideIcon: true,
+            showIcon: false
         }
     },
     props:{
@@ -38,14 +68,53 @@ export default {
         },
         clearable:{
             type: Boolean,
-        }
+        },
+        prefixIcon:{
+            type: String
+        },
+        suffixIcon:{
+            type: String
+        },
+        iconSize:{
+            type:String,
+            default:'small'
+        },
     },
     methods:{
         handleInput(event){        
             let value=event.target.value
-            this.currentValue=value
+           this.setCurrentValue(value)
             // console.log(this.currentValue)
-            this.$emit('input', value);            
+            this.$emit('input', value);  
+            this.handleShowIcon()          
+        },
+        changeIcon(event){
+            let value=event.target.value
+           
+        },
+        setCurrentValue(value){
+            this.currentValue=value
+        },
+        handleHideIcon(value){
+            // console.log(this)
+            if(this.clearable){
+                this.hideIcon=true
+                this.showIcon=false
+            }
+        },
+        handleShowIcon(value){
+            if(this.clearable&&this.currentValue){
+                this.hideIcon=false
+                this.showIcon=true
+            }
+        },
+        clearValue(){
+            this.setCurrentValue('')
+            this.handleHideIcon()
+        },
+        clickIcon(event){
+            // console.log(event)
+            this.$emit('click',event)
         }
     },
     mounted(){
@@ -53,7 +122,7 @@ export default {
         // console.log(this.currentValue)
     },
     updated(){
-        // console.log(this.value)
+        // console.log(!!(this.currentValue))
     }
 }
 </script>
@@ -61,15 +130,51 @@ export default {
 <style lang="scss" scoped>
     .vi-input-wrapper{
         display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
         border: 1px solid #e1e1e1;
-         border-radius: 3px;
+        border-radius: 3px;
+        font-family:  Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
+        .vi-input-icon-wrapper{
+            &.vi-input-hide{
+                visibility:hidden;
+                width: 1.2em;
+                height: 1.2em;
+            }
+            &.vi-input-show{
+                display:inline;
+                width: 1.2em;
+                height: 1.2em;
+            }
+            .vi-input-icon{
+                vertical-align: middle;
+                width: 1.3em;
+                height: 1.3em;
+            }
+        }
         .vi-input{
             border: 1px solid transparent;  //自定义边框
             outline: none;  
-            padding: 0.6em 0.1em;
+            padding: 0.7em 0.1em;
             cursor: pointer;
             &.vi-input-disabled{
                 cursor: not-allowed;
+            }
+        }
+        &.vi-input-prefixicon{
+            > .vi-input-icon-wrapper{
+                order: 1;
+            }
+            > .vi-input{
+                order: 2;
+            }
+        }
+        &.vi-input-suffixicon{
+            > .vi-input-icon-wrapper{
+                order: 2;
+            }
+            > .vi-input{
+                order: 1;
             }
         }
     }

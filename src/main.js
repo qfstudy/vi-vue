@@ -17,6 +17,7 @@ new Vue({
   },
   methods: {
     aa(value){
+      console.log(52)
       console.log(value)
     }
   },

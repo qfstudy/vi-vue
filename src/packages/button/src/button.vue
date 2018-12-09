@@ -118,7 +118,7 @@ export default {
             }
         }
         &.vi-button-left{
-             > .vi-button-icon{
+            > .vi-button-icon{
                 order: 1;
             }
             > .vi-button-content{

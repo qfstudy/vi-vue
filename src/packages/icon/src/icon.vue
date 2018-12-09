@@ -1,5 +1,5 @@
 <template>
-    <svg class="vi-icon" :class="`vi-icon-${viIconSize}`">
+    <svg class="vi-icon" :class="`vi-icon-${viIconSize}`" @click="iconClick">
         <use :xlink:href="`#vi-${viIconName}`"></use>
     </svg> 
 </template>
@@ -24,6 +24,11 @@ export default {
             }
         }
     },
+    methods:{
+        iconClick(event){
+            this.$emit('click',event)
+        }
+    }
     // mounted(){
     //     console.log(this.$props.name)
     // }

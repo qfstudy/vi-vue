@@ -36,10 +36,6 @@ export default {
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
             } 
-            // &:hover{
-            //     position: relative;
-            //     z-index: 1;
-            // }
         }
         
     }

@@ -11,15 +11,21 @@
       padding: 0;
       box-sizing: border-box;
     }
-
+ .test{
+   fill: red;
+   /* background: green; */
+ }
   </style>
 </head>
 
 <body>
   <div id="app">
     <div class="icon">
-      <vi-icon vi-icon-name="search" vi-icon-size="medium"></vi-icon>
-      <vi-icon vi-icon-name="search" vi-icon-size=small>
+      <vi-icon class="test" vi-icon-name="info" vi-icon-size="small"></vi-icon>
+      <vi-icon vi-icon-name="search" vi-icon-size=small></vi-icon>
+      <vi-icon vi-icon-name="info" vi-icon-size=small></vi-icon>
+      <vi-icon vi-icon-name="clear" vi-icon-size=small></vi-icon>
+      
     </div>
 
     <div class="button">
@@ -33,8 +39,9 @@
 
     <div class="buttonGroup">
       <vi-button-group>
-        <vi-icon class="ss" vi-icon-name="search" vi-icon-size=small></vi-icon>
-        <vi-icon class="ss" vi-icon-name="search" vi-icon-size=small></vi-icon>
+        <vi-icon class="ss" vi-icon-name="left" vi-icon-size=small></vi-icon>
+        <vi-icon class="ss" vi-icon-name="pause" vi-icon-size=small></vi-icon>
+        <vi-icon class="ss" vi-icon-name="right" vi-icon-size=small></vi-icon>
       </vi-button-group>
       <!-- <br> -->
       <vi-button-group>
@@ -55,7 +62,9 @@
     <hr>
     <br>
     <div class="input">
-        <vi-input placeholder="请输入内容" ></vi-input>
+      <vi-input placeholder="prefix" prefix-icon="info" @click="aa"></vi-input>
+      <vi-input placeholder="suffix" clearable suffix-icon="error" ></vi-input>
+      
       <vi-input placeholder="请输入内容" v-model="input1"></vi-input>
       <vi-input disabled placeholder="禁止修改"></vi-input>
     </div>
