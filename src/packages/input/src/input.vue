@@ -33,6 +33,7 @@
             <input 
             class="vi-input" 
             :disabled="disabled"
+            :readonly="readonly"
             :placeholder="placeholder" 
             :class="[{'vi-input-disabled':disabled}]"
             :value="currentValue"
@@ -79,6 +80,9 @@ export default {
             type:String,
             default:'small'
         },
+        readonly:{
+            type: Boolean
+        }
     },
     methods:{
         handleInput(event){        
