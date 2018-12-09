@@ -142,18 +142,14 @@ export default {
         .vi-input-icon-wrapper{
             &.vi-input-hide{
                 visibility:hidden;
-                width: 1.2em;
-                height: 1.2em;
             }
             &.vi-input-show{
                 display:inline;
-                width: 1.2em;
-                height: 1.2em;
             }
             .vi-input-icon{
                 vertical-align: middle;
-                width: 1.3em;
-                height: 1.3em;
+                width: 1.2em;
+                height: 1.2em;
             }
         }
         .vi-input{
