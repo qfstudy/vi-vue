@@ -15,17 +15,24 @@ export default {
     props:{
         span:{
             type:[Number]
+        },
+        offset:{
+            type:[Number]
         }
     },
     computed:{
         colClass(){
             // console.log(55)
-            let{span}=this
+            let{span,offset}=this
             // console.log(span)
             return[
-                span&&`vi-col-${span}`
+                span&&`vi-col-${span}`,
+                offset&&`vi-col-offset-${offset}`
             ]
         },
+        // colOffset(){
+        //     let {offset}=this
+        // },
         colStyle(){
             return{
                 paddingLeft:this.gutter/2 + 'px',
@@ -39,12 +46,18 @@ export default {
 
 <style lang="scss" scoped>
     $class-prefix: vi-col-;
+    $class-offset: vi-col-offset-;
     .vi-col{
         // width: 100%;
         // display: flex;
         @for $n from 1 through 24{
             &.#{$class-prefix}#{$n}{
                 width: ($n/24) * 100%;
+            }
+        }
+        @for $n from 1 through 24{
+            &.#{$class-offset}#{$n}{
+                margin-left: ($n/24) * 100%;
             }
         }
        
