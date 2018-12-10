@@ -1,5 +1,5 @@
 <template>
-    <div class="vi-row" :style="rowStyle">
+    <div class="vi-row" :style="rowStyle" :class="rowClass">
         <slot></slot>
     </div>
 </template>
@@ -9,7 +9,13 @@ export default {
     name:'ViRow',
     props:{
         gutter:{
-            type:[Number,String]
+            type:[Number]
+        },
+        justify:{
+            type:[String],
+            validator(value){
+                return ['end','center','around','between'].indexOf(value)>-1
+            }
         }
     },
     computed:{
@@ -20,6 +26,10 @@ export default {
                 marginRight:-gutter/2+'px'
             }
         },
+        rowClass(){
+            let{justify}=this
+            return[justify&&`vi-row-${justify}`]
+        }
     },
     mounted(){
         //    console.log(this.$children)
@@ -34,7 +44,18 @@ export default {
 <style lang="scss" scoped>
     .vi-row{
         display: flex;
-        // width:100%;
-        // height: 100%;
+        // justify-content: flex-end;
+        &.vi-row-end{
+            justify-content: flex-end;
+        } 
+        &.vi-row-center{
+            justify-content: center;
+        } 
+        &.vi-row-around{
+            justify-content: space-around;
+        } 
+        &.vi-row-between{
+            justify-content: space-between;
+        }  
     }
 </style>
