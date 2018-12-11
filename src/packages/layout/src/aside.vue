@@ -1,17 +1,17 @@
 <template>
-    <div class="vi-footer">
-        footer
+    <div class="vi-aside">
+        aside
     </div>
 </template>
 
 <script>
 export default {
-    name:'ViFooter'
+    name:'ViAside'
 }
 </script>
 
 <style lang="scss" scoped>
-    .vi-footer{
-        // background: blueviolet;
+    .vi-aside{
+        // background: yellowgreen;
     }
 </style>
