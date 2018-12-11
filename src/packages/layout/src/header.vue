@@ -1,6 +1,6 @@
 <template>
     <div class="vi-header">
-        header
+        <slot></slot>
     </div>
 </template>
 
@@ -11,7 +11,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .vi-header{
-        // background: fuchsia;
-    }
+    
 </style>

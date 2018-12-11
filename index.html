@@ -40,6 +40,38 @@
  }
 
   </style>
+  <style>
+    .vi-main{
+      background-color: #E9EEF3;
+      color: #333;
+      text-align: center;
+      line-height: 160px;
+    }
+    .vi-header,.vi-footer{
+      background-color: #B3C0D1;
+      color: #333;
+      text-align: center;
+      line-height: 60px;
+    }
+    .vi-aside{
+      background-color: #D3DCE6;
+      color: #333;
+      text-align: center;
+      line-height: 200px; 
+    }
+    body  .vi-container {
+      margin-bottom: 40px;
+    }
+    
+    .vi-container:nth-child(5) .vi-aside,
+    .vi-container:nth-child(6) .vi-aside {
+      line-height: 260px;
+    }
+    
+    .vi-container:nth-child(7) .vi-aside {
+      line-height: 320px;
+    }
+  </style>
 </head>
 
 <body>
@@ -138,16 +170,19 @@
     <hr>
     <br>
     <div class="layout">
-      <vi-Container>
-        <vi-header></vi-header>
-        <vi-main></vi-main>
-      </vi-Container>
-      <vi-Container>
-        <vi-header></vi-header>
-        <vi-aside></vi-aside>
-        <vi-header></vi-header>
-        <vi-main></vi-main>
-      </vi-Container>
+      <vi-container>
+        <vi-header>header</vi-header>
+        <vi-main>main</vi-main>
+        <vi-footer>footer</vi-footer>
+      </vi-container>
+      <vi-container>
+        <vi-aside>aside</vi-aside>
+        <vi-container>
+          <vi-header>header</vi-header>
+          <vi-main>main</vi-main>
+          <vi-footer>footer</vi-footer>
+        </vi-container>
+      </vi-container>
     </div>
 
   </div>
