@@ -13,6 +13,5 @@ export default {
 <style lang="scss" scoped>
     .vi-main{
         flex-grow: 1;
-        // background: hotpink;
     }
 </style>
