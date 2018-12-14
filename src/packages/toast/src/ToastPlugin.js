@@ -16,21 +16,21 @@ export default {
        Vue.prototype.$toast=function(toastOptions){
         // console.log(2)
            if(currentToast){
-               console.log(96)
+            //    console.log(96)
                currentToast.close()
-            currentToast=null
+                // currentToast=null
            }
            currentToast=createToast({
                Vue,
                propsData:toastOptions,
                closeCurrentToast:()=>{
-                   console.log(currentToast)
-                   console.log(566)
+                //    console.log(currentToast)
+                //    console.log(566)
                    currentToast=null
-                   console.log(currentToast)
+                //    console.log(currentToast)
                }
            })
-           console.log(toastOptions)
+        //    console.log(toastOptions)
        }
    }
 }

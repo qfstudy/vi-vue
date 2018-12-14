@@ -37,9 +37,10 @@ export default {
     },
     methods:{
         close(){
-            console.log(this.$el)
-            // this.$el.remove()
+            // console.log(this.$el)
+            this.$el.remove()
             this.$emit('close')
+            this.$destroy()
         }
     },
     computed:{
