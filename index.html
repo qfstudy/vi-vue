@@ -79,12 +79,13 @@
     <div class="icon">
       <vi-icon class="test" vi-icon-name="info" vi-icon-size="small"></vi-icon>
       <vi-icon vi-icon-name="search" vi-icon-size=small></vi-icon>
+      <vi-icon vi-icon-name="error" vi-icon-size=small></vi-icon>
       <vi-icon vi-icon-name="info" vi-icon-size=small></vi-icon>
       <vi-icon vi-icon-name="clear" vi-icon-size=small></vi-icon>
     </div>
 
     <div class="button">
-      <vi-button class="dc" @click="aa">默认样式</vi-button>
+      <vi-button class="dc">默认样式</vi-button>
       <vi-button type="default">默认样式</vi-button>
       <vi-button type="primary" icon-name="upload" >主要按钮</vi-button>
       <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle"></vi-button>
@@ -182,12 +183,16 @@
     </div> -->
 
     <div class="toast">
-      <vi-toast>ss</vi-toast>
+      <vi-toast>
+        <button @click="showToast">点我</button>
+        <button @click="showToast1">点我1</button>
+      </vi-toast>
     </div>
 
   </div>
 </body>
+
 <script>
-  
+  // console.log(1)
 </script>
 </html>

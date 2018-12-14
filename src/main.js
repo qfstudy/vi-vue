@@ -14,6 +14,9 @@ import Header from './packages/layout/src/header'
 import Container from './packages/layout/src/container'
 import Aside from './packages/layout/src/aside'
 import Toast from './packages/toast/src/toast'
+import ToastPlugin from './packages/toast/src/ToastPlugin.js'
+Vue.use(ToastPlugin)
+
 
 Vue.component('vi-button',Button)
 Vue.component('vi-icon',Icon)
@@ -34,12 +37,29 @@ new Vue({
     input1:''
   },
   methods: {
-    aa(value){
-      console.log(52)
-      console.log(value)
+    // aa(value){
+    //   console.log(52)
+    //   console.log(value)
+    // },
+    showToast(){
+      // console.log(this)
+      this.$toast({
+        message:'提示信息',
+        icon:{'name':'error','size':"small"}
+      })
+    },
+    showToast1(){
+      // console.log(this)
+      this.$toast({
+        message:'提示信息',
+        // icon:{'name':'error','size':"small"}
+        closeButton:{
+          text:'关闭'
+        }
+      })
     }
   },
-  updated () {
-    // console.log(this.input1)
+  mounted () {
+    // console.log(ToastPlugin)
   }
 })
