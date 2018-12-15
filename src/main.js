@@ -45,7 +45,16 @@ new Vue({
       // console.log(this)
       this.$toast({
         message:'提示信息',
-        icon:{'name':'error','size':"small"}
+        icon:{'name':'error','size':"small"},
+        autoClose:false
+      })
+    },
+    showToast4(){
+      // console.log(this)
+      this.$toast({
+        message:'提示信息',
+        icon:{'name':'error','size':"large"},
+        autoClose:false
       })
     },
     showToast3(){
