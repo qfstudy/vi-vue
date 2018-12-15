@@ -48,14 +48,27 @@ new Vue({
         icon:{'name':'error','size':"small"}
       })
     },
-    showToast1(){
+    showToast3(){
       // console.log(this)
       this.$toast({
         message:'提示信息',
-        // icon:{'name':'error','size':"small"}
+        icon:{'name':'error'},
+        autoClose:false
+      })
+    },
+    showToast1(){
+      this.$toast({
+        message:'提示信息',
+        duration: 1
+      })
+    },
+    showToast2(){
+      this.$toast({
+        message:'提示信息',
         closeButton:{
-          text:'关闭'
-        }
+          text:'关闭',
+        },
+        autoClose:false
       })
     }
   },
