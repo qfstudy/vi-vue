@@ -21,7 +21,7 @@ export default {
                propsData:toastOptions,
                closeCurrentToast:()=>{
                    currentToast=null
-               }
+               },
            })
         //    console.log(toastOptions)
        }

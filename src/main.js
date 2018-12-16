@@ -41,8 +41,9 @@ new Vue({
     //   console.log(52)
     //   console.log(value)
     // },
+
+
     showToast(){
-      // console.log(this)
       this.$toast({
         message:'提示信息0',
         icon:{'name':'error','size':"small"},
@@ -50,25 +51,25 @@ new Vue({
       })
     },
     showToast4(){
-      // console.log(this)
       this.$toast({
         message:'提示信息4',
         icon:{'name':'error','size':"large"},
         autoClose:false
       })
     },
-    showToast3(){
-      // console.log(this)
+    showToast3(){     
       this.$toast({
         message:'提示信息3',
         icon:{'name':'error'},
-        autoClose:false
+        autoClose:false,
+        position: 'bottom'
       })
     },
     showToast1(){
       this.$toast({
         message:'提示信息1',
-        duration: 1
+        duration: 1,
+        position: 'middle'
       })
     },
     showToast2(){
@@ -77,7 +78,8 @@ new Vue({
         closeButton:{
           text:'关闭',
         },
-        autoClose:false
+        autoClose:false,
+        position: 'top'
       })
     }
   },
