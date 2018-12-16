@@ -1,12 +1,13 @@
 <template>
     <div class="vi-toast-wrapper">
-        <div  class="vi-toast">
+        <div  class="vi-toast" ref="toast">
             <div v-if="message" class="vi-toast-message-wrapper" :class="setIconClass">
                 <span v-if="icon" class="vi-toast-icon-wrapper">
                     <!-- //&&autoClose -->
                     <vi-icon class="vi-toast-icon" :viIconName="icon.name" :viIconSize="icon.size"></vi-icon>
                 </span>
                 <span class="vi-toast-message">{{message}}</span>
+                <div class="vi-toast-line" ref="line" v-if="!icon&&!autoClose"></div>
                 <span class="vi-toast-close-button" v-if="!icon&&!autoClose" @click="closeToast">{{closeButton.text}}</span>
             </div>
         </div>
@@ -56,9 +57,19 @@ export default {
             this.$destroy()
         },
         execAutoClose(){
-            setTimeout(()=>{
-                this.closeToast()
-            },this.duration*1000)
+            if(this.autoClose){
+                setTimeout(()=>{
+                    this.closeToast()
+                }, this.duration*1000)
+            }
+        },
+        lineStyle(){
+            this.$nextTick(()=>{
+                // console.log(this.$refs.toast.getBoundingClientRect())
+                if(!this.icon&&!this.autoClose){
+                    this.$refs.line.style.height=`${this.$refs.toast.getBoundingClientRect().height}px`
+                }
+            })
         }
     },
     computed:{
@@ -67,20 +78,35 @@ export default {
         }
     },
     mounted () {
-        if(this.autoClose){
-            this.execAutoClose()
-        }
+        this.lineStyle()
+        this.execAutoClose()
     }
 }
 </script>
 
 <style lang="scss" scoped>
     .vi-toast-wrapper{
+        font-family:  Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
         display: inline-block;
-        border: 1px solid black;
+        // border: 1px solid black;
+        color: #fff;
+        font-size: 14px;
+        position: fixed;
+        top: 0;
+        // bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        // top: 50%;
         .vi-toast{
-            border: 1px solid yellow;
+            // position: fixed;
+            // border: 1px solid yellow;
+            background: #000;
+            opacity: 0.6;
+            // background:rgba(1, 2, 5, 0.6);
+            border-radius: 3px;
+            min-height: 10px;
             .vi-toast-message-wrapper{
+                // position: absolute;
                 display: inline-flex;
                 align-items: center;
                 vertical-align: middle;
@@ -88,40 +114,27 @@ export default {
                     flex-direction: column;
                 }
                 .vi-toast-icon-wrapper{
-                    // vertical-align: middle;
-                    // display: inline-block;
-                    border: 1px solid red;
+                    // border: 1px solid red;
+                    padding: 0.2em 0.6em;
                     .vi-toast-icon{
                         vertical-align: middle;
-                        border: 1px solid green;
+                        fill: #fff;
+                        // border: 1px solid green;
                     }
                 }
                 .vi-toast-message{
-                    border: 1px solid darkcyan;
-                    // vertical-align: middle;
+                    // border: 1px solid darkcyan;
+                    padding: 0.2em 0.2em;
+                }
+                .vi-toast-line{
+                    width: 1px;
+                    background: red;
                 }
                 .vi-toast-close-button{
-                    border: 1px solid blue;
-                    // vertical-align: middle;
+                    // border: 1px solid blue;
+                    padding: 0.2em 0.2em;
                 }
             }
         }
     }
-    // .vi-toast-message-wrapper{
-    //     display: inline-block;
-    //     position: absolute;
-    //     align-items: center;
-    //     vertical-align: middle;
-    //     border: 1px solid red;
-    //     margin-top: 0;
-
-    //     .vi-toast-message{
-    //         vertical-align: middle;
-    //     }
-    //     .vi-toast-icon-wrapper{
-    //         .vi-toast-icon{
-    //             vertical-align: middle;
-    //         }
-    //     }
-    // }
 </style>

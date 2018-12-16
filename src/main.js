@@ -44,7 +44,7 @@ new Vue({
     showToast(){
       // console.log(this)
       this.$toast({
-        message:'提示信息',
+        message:'提示信息0',
         icon:{'name':'error','size':"small"},
         autoClose:false
       })
@@ -52,7 +52,7 @@ new Vue({
     showToast4(){
       // console.log(this)
       this.$toast({
-        message:'提示信息',
+        message:'提示信息4',
         icon:{'name':'error','size':"large"},
         autoClose:false
       })
@@ -60,20 +60,20 @@ new Vue({
     showToast3(){
       // console.log(this)
       this.$toast({
-        message:'提示信息',
+        message:'提示信息3',
         icon:{'name':'error'},
         autoClose:false
       })
     },
     showToast1(){
       this.$toast({
-        message:'提示信息',
+        message:'提示信息1',
         duration: 1
       })
     },
     showToast2(){
       this.$toast({
-        message:'提示信息',
+        message:'提示信息2',
         closeButton:{
           text:'关闭',
         },
