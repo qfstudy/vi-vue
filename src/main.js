@@ -68,9 +68,9 @@ new Vue({
     showToast1(){
       this.$toast({
         message:'提示信息1',
-        duration: 1,
+        duration: 10,
         position: 'middle',
-        autoClose:false
+        // autoClose:false
       })
     },
     showToast2(){

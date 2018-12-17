@@ -59,7 +59,6 @@ export default {
     },
     methods:{
         closeToast(){
-            // console.log(this.$el.lastChild)
             this.$el.lastChild.remove()
             this.$emit('close')
             this.$destroy()
@@ -81,9 +80,6 @@ export default {
         },
     },
     computed:{
-        // setIconClass(){
-        //     return{'vi-toast-message-wrapper-icon':this.icon}
-        // },
         positionClass(){
             return {[`vi-toast-${this.position}`]:this.position}
         }
@@ -97,7 +93,6 @@ export default {
 
 <style lang="scss" scoped>
     .vi-toast-wrapper{
-        // background: red;
         display: inline-block;
         .vi-toast{
             font-family: Arial,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif;
@@ -111,9 +106,6 @@ export default {
                 background: #000;
                 opacity: 0.6;
                 border-radius: 3px;
-                // &.vi-toast-message-wrapper-icon{
-                //     flex-direction: column;
-                // }
                 .vi-toast-icon-wrapper{                   
                     padding: 0.2em 0.4em;
                     .vi-toast-icon{
@@ -122,11 +114,10 @@ export default {
                     }
                 }
                 .vi-toast-message{
-                    padding: 0 0.6em;
+                    padding: 0.42em 0.6em;
                 }
                 .vi-toast-line{
                     display: inline-block;
-                    // margin: 0 0.3em;
                     width: 1.7px;
                     background: #fff;
                 }
