@@ -60,7 +60,7 @@ new Vue({
     showToast3(){     
       this.$toast({
         message:'提示信息3',
-        icon:{'name':'error'},
+        icon:{'name':'error',size:'small'},
         autoClose:false,
         position: 'bottom'
       })

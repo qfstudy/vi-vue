@@ -4,13 +4,12 @@
             <slot></slot>
         </div>
         <div class="vi-toast" :class="positionClass" ref="toast">
-            <div v-if="message" class="vi-toast-message-wrapper" :class="setIconClass">
-                <span v-if="icon" class="vi-toast-icon-wrapper">
-                    <!-- //&&autoClose -->
-                    <vi-icon class="vi-toast-icon" :viIconName="icon.name" :viIconSize="icon.size"></vi-icon>
-                </span>
+            <div v-if="message" class="vi-toast-message-wrapper">
                 <span class="vi-toast-message">{{message}}</span>
-                <div class="vi-toast-line" ref="line" v-if="!icon&&!autoClose"></div>
+                <div class="vi-toast-line" ref="line" v-if="!autoClose"></div>
+                <span v-if="icon&&!autoClose" class="vi-toast-icon-wrapper" >
+                    <vi-icon class="vi-toast-icon" :viIconName="icon.name" :viIconSize="icon.size" @click="closeToast"></vi-icon>
+                </span>
                 <span class="vi-toast-close-button" v-if="!icon&&!autoClose" @click="closeToast">{{closeButton.text}}</span>
             </div>
         </div>
@@ -45,7 +44,6 @@ export default {
             default: 3,
             validator(value){
                 if(value<0){
-                    // console.log('duration的值必须是Number类型并且不能小于0')
                     this.autoClose=false                  
                 }
                 return value>=0
@@ -53,7 +51,7 @@ export default {
         },
         position:{
             type: String,
-            // default: 'top',
+            default: 'top',
             validator(value){
                 return ['top','middle','bottom'].indexOf(value)>-1
             }
@@ -77,16 +75,16 @@ export default {
         lineStyle(){
             this.$nextTick(()=>{
                 // console.log(this.$refs.toast.getBoundingClientRect())
-                if(!this.icon&&!this.autoClose){
+                if(!this.autoClose){
                     this.$refs.line.style.height=`${this.$refs.toast.getBoundingClientRect().height}px`
                 }
             })
         },
     },
     computed:{
-        setIconClass(){
-            return{'vi-toast-message-wrapper-icon':this.icon}
-        },
+        // setIconClass(){
+        //     return{'vi-toast-message-wrapper-icon':this.icon}
+        // },
         positionClass(){
             return {[`vi-toast-${this.position}`]:this.position}
         }
@@ -102,10 +100,6 @@ export default {
     .vi-toast-wrapper{
         // background: red;
         display: inline-block;
-        .vi-toast-slot{
-            background: yellow;
-            display: inline-block;
-        }
         .vi-toast{
             font-family: Arial,Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,sans-serif;
             display: inline-block;
@@ -118,9 +112,9 @@ export default {
                 background: #000;
                 opacity: 0.6;
                 border-radius: 3px;
-                &.vi-toast-message-wrapper-icon{
-                    flex-direction: column;
-                }
+                // &.vi-toast-message-wrapper-icon{
+                //     flex-direction: column;
+                // }
                 .vi-toast-icon-wrapper{                   
                     padding: 0.2em 0.6em;
                     .vi-toast-icon{
@@ -132,6 +126,8 @@ export default {
                     padding: 0.2em 0.2em;
                 }
                 .vi-toast-line{
+                    display: inline-block;
+                    margin: 0 0.3em;
                     width: 1px;
                     background: #fff;
                 }
@@ -141,7 +137,6 @@ export default {
             }
         }
         .vi-toast.vi-toast-top{
-            // background: red;
             position: fixed;
             top: 0;
             left: 50%;

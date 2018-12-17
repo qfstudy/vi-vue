@@ -12,8 +12,10 @@
       box-sizing: border-box;
     }
  .test{
-   fill: red;
+   /* fill: red; */
    /* background: green; */
+   /* margin-top: 100px; */
+
  }
  .grid{
    margin: 0 2px;
@@ -34,9 +36,9 @@
  }
  
  .test{
-   height: 100%;
+   /* height: 100%;
    background: yellow;
-   border-radius: 3px;
+   border-radius: 3px; */
  }
 
   </style>
@@ -72,10 +74,16 @@
       line-height: 320px;
     }
     .vi-icon-default{
-      fill: red;
-      width: 4em;
+      /* fill: red; */
+      /* width: 4em;
       height: 4em;
-      padding: 0;
+      padding: 0; */
+    }
+    .test{
+      /* display: inline; */
+      background: yellow;
+      margin-top: 100px;
+      margin-left: 10px;
     }
   </style>
 </head>
@@ -188,7 +196,7 @@
       </vi-container>
     </div> -->
 
-    <div class="toast">
+    <div class="toast test">
       <vi-toast>
         <button @click="showToast">点我</button>
         <button @click="showToast1">点我1</button>
@@ -203,6 +211,14 @@
         <button @click="showToast3">点我3</button>
         <button @click="showToast4">点我4</button>
     </div>
+     <!-- <div class="button">
+      <vi-button class="dc">默认样式</vi-button>
+      <vi-button type="default">默认样式</vi-button>
+      <vi-button type="primary" icon-name="upload" >主要按钮</vi-button>
+      <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle"></vi-button>
+      <vi-button type="primary" icon-name="upload" icon-position="right">主要按钮</vi-button>
+      <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle" disabled="disabled"></vi-button>
+    </div> -->
 
   </div>
 </body>
