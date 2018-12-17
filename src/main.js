@@ -16,7 +16,11 @@ import Aside from './packages/layout/src/aside'
 import Toast from './packages/toast/src/toast'
 import ToastPlugin from './packages/toast/src/ToastPlugin.js'
 Vue.use(ToastPlugin)
-
+import Tabs from './packages/tabs/src/tabs'
+import TabsNav from './packages/tabs/src/tabs-nav'
+import TabsItem from './packages/tabs/src/tabs-item'
+import TabsBody from './packages/tabs/src/tabs-body'
+import TabsContent from './packages/tabs/src/tabs-content'
 
 Vue.component('vi-button',Button)
 Vue.component('vi-icon',Icon)
@@ -30,6 +34,11 @@ Vue.component('vi-header',Header)
 Vue.component('vi-container',Container)
 Vue.component('vi-aside',Aside)
 Vue.component('vi-toast',Toast)
+Vue.component('vi-tabs',Tabs)
+Vue.component('vi-tabs-nav',TabsNav)
+Vue.component('vi-tabs-item',TabsItem)
+Vue.component('vi-tabs-body',TabsBody)
+Vue.component('vi-tabs-content',TabsContent)
 
 new Vue({
   el: '#app',
