@@ -56,7 +56,6 @@ export default {
                 return ['top','middle','bottom'].indexOf(value)>-1
             }
         }
-        
     },
     methods:{
         closeToast(){
@@ -116,23 +115,23 @@ export default {
                 //     flex-direction: column;
                 // }
                 .vi-toast-icon-wrapper{                   
-                    padding: 0.2em 0.6em;
+                    padding: 0.2em 0.4em;
                     .vi-toast-icon{
                         vertical-align: middle;
                         fill: #fff;                       
                     }
                 }
                 .vi-toast-message{
-                    padding: 0.2em 0.2em;
+                    padding: 0 0.6em;
                 }
                 .vi-toast-line{
                     display: inline-block;
-                    margin: 0 0.3em;
-                    width: 1px;
+                    // margin: 0 0.3em;
+                    width: 1.7px;
                     background: #fff;
                 }
                 .vi-toast-close-button{
-                    padding: 0.2em 0.2em;
+                    padding: 0.42em 0.3em;
                 }
             }
         }

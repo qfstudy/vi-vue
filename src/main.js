@@ -53,7 +53,7 @@ new Vue({
     showToast4(){
       this.$toast({
         message:'提示信息4',
-        icon:{'name':'error','size':"large"},
+        icon:{'name':'error','size':"small"},
         autoClose:false
       })
     },
@@ -69,7 +69,8 @@ new Vue({
       this.$toast({
         message:'提示信息1',
         duration: 1,
-        position: 'middle'
+        position: 'middle',
+        autoClose:false
       })
     },
     showToast2(){
