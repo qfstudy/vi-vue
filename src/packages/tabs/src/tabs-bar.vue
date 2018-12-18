@@ -1,18 +1,18 @@
 <template>
-    <div class="vi-tabs-body">
+    <div class="vi-tabs-nav">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-    name:'ViTabsBody'
+    name:"ViTabsBar"
 }
 </script>
 
 <style lang="scss" scoped>
-    .vi-tabs-body{
-        // display: flex;
-        border: 1px solid greenyellow;
+    .vi-tabs-nav{
+        display: inline-flex;
+        border: 1px solid red;
     }
 </style>

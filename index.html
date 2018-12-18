@@ -211,9 +211,18 @@
         <button @click="showToast3">点我3</button>
         <button @click="showToast4">点我4</button>
     </div> -->
-    <vi-tabs>
-      <vi-tabs-nav></vi-tabs-nav>
-      <vi-tabs-body></vi-tabs-body>
+    <vi-tabs class="tabs" :selected.sync="selectedTab">
+      <vi-tabs-bar>
+        <vi-tabs-item name="woman">标签1</vi-tabs-item>
+        <vi-tabs-item name="finance">标签2</vi-tabs-item>
+        <vi-tabs-item name="sport">标签3</vi-tabs-item>
+      </vi-tabs-bar>
+      <vi-tabs-body>
+        <vi-tabs-content name="woman">标签1的内容</vi-tabs-content>
+        <vi-tabs-content name="finance">标签2的内容</vi-tabs-content>
+        <vi-tabs-content name="sport">标签3的内容</vi-tabs-content>
+      </vi-tabs-body>
+      {{selectedTab}}
     </vi-tabs>
 
 
