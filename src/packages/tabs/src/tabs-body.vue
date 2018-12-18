@@ -6,7 +6,8 @@
 
 <script>
 export default {
-    name:'ViTabsBody'
+    name:'ViTabsBody',
+    inject:['eventBus'],
 }
 </script>
 

@@ -1,18 +1,33 @@
 <template>
-    <div class="vi-tabs-nav">
+    <div ref="bar" class="vi-tabs-bar">
         <slot></slot>
     </div>
 </template>
 
 <script>
 export default {
-    name:"ViTabsBar"
+    name:"ViTabsBar",
+    inject:['eventBus'],
+    props:{
+        color:{
+            type:String
+        }
+    },
+    methods:{
+        setBackground(){
+            // console.log(this.color)
+            this.$refs.bar.style.background=`${this.color}`
+        }
+    },
+    mounted(){
+        this.setBackground()
+    }
 }
 </script>
 
 <style lang="scss" scoped>
-    .vi-tabs-nav{
-        display: inline-flex;
-        border: 1px solid red;
+    .vi-tabs-bar{
+        display: flex;
+        justify-content: space-around;
     }
 </style>

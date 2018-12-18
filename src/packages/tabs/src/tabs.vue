@@ -1,6 +1,5 @@
 <template>
     <div class="vi-tabs">
-        {{selected}}
         <slot></slot>
     </div>
 </template>
@@ -33,7 +32,7 @@ export default {
                     // console.log(vmChild.name)
                     if(vmChild.$options.name==='ViTabsItem'&&vmChild.name===this.selected){
                         // console.log(this.selected)
-                        this.eventBus.$emit('update:selected',this.selected)
+                        this.eventBus.$emit('update:selected',this.selected,vmChild)
                     }
                 })
             }
