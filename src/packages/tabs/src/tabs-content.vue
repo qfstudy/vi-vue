@@ -41,10 +41,11 @@ export default {
 
 <style lang="scss" scoped>
     .vi-tabs-content{
-        border: 1px solid cadetblue;
+        // border: 1px solid cadetblue;
         padding: 0.2em 0;
+        // background: red;
     }
     .vi-tabs-content-active{
-        background: goldenrod;
+        // background: goldenrod;
     }
 </style>

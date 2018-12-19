@@ -1,10 +1,14 @@
 <template>
     <div class="vi-tabs-item" :class="setClass" ref="line" @click="onClick">
-        <slot></slot>
+        <span class="vi-tabs-item-icon-wrapper" v-if="iconName">
+            <vi-icon class="vi-tabs-item-icon" :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
+        </span>
+        <span class="vi-tabs-item-slot"><slot></slot></span>
     </div>
 </template>
 
 <script>
+import Icon from '../../icon/src/icon'
 export default {
     name:'ViTabsItem',
     inject:['eventBus'],
@@ -18,8 +22,21 @@ export default {
             type:String|Number,
             required: true
         },
-        line:{
+        lineColor:{
             type:String
+        },
+        position:{
+            type: String,
+            validator(value){
+                return['right','top'].indexOf(value)>-1
+            }
+        },
+        iconName:{
+            type: String
+        },
+        iconSize:{
+            type: String,
+            default: 'small'
         }
     },
     
@@ -28,12 +45,16 @@ export default {
             this.eventBus.$emit('update:selected',this.name)
         },
         setLine(){
-            this.$refs.line.style.borderBottomColor=`${this.line}`
+            this.$refs.line.style.borderBottomColor=`${this.lineColor}`           
+            // this.$refs.line.style.borderBottom=`1px solid ${this.lineColor}`          
         },
     },
     computed:{
         setClass(){
-            return{'vi-tabs-item-active':this.active}
+            return{
+                'vi-tabs-item-active':this.active,
+                [`vi-tabs-item-${this.position}`]: this.position
+            }
         }
     },
     mounted(){
@@ -55,11 +76,31 @@ export default {
 
 <style lang="scss" scoped>
     .vi-tabs-item{
-        padding: 0.1em 0.1em;
-       
+        display: flex;
+        align-items: center;
+        padding: 0.3em 0.3em;
+        // vertical-align: middle;
+        .vi-tabs-item-icon-wrapper{
+            // vertical-align: middle;
+            .vi-tabs-item-icon{
+                vertical-align: middle;
+            }
+        }
+        &.vi-tabs-item-right{
+            .vi-tabs-item-icon-wrapper{
+                order: 2;
+            }
+            .vi-tabs-item-slot{
+                order: 1;
+            }
+        }
+        &.vi-tabs-item-top{
+            flex-direction: column;
+        }
+        &.vi-tabs-item-active{       
+            border-bottom: 1px solid;
+        }
     }
-    .vi-tabs-item-active{
-         border-bottom: 1px solid;
-    }
+    
 
 </style>

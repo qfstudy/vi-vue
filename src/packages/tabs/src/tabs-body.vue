@@ -14,6 +14,6 @@ export default {
 <style lang="scss" scoped>
     .vi-tabs-body{
         // display: flex;
-        border: 1px solid greenyellow;
+        // border: 1px solid greenyellow;
     }
 </style>
