@@ -44,7 +44,7 @@ new Vue({
   el: '#app',
   data:{
     input1:'',
-    selectedTab:'sport'
+    selectedTab:'sport'//tabs组件
   },
   methods: {
     // aa(value){
