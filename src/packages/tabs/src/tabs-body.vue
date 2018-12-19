@@ -12,8 +12,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .vi-tabs-body{
-        // display: flex;
-        // border: 1px solid greenyellow;
-    }
+
 </style>

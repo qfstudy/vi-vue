@@ -1,5 +1,5 @@
 <template>
-    <div class="vi-tabs-item" :class="setClass" ref="line" @click="onClick">
+    <div class="vi-tabs-item" :class="setClass" @click="onClick">
         <span class="vi-tabs-item-icon-wrapper" v-if="iconName">
             <vi-icon class="vi-tabs-item-icon" :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
         </span>
@@ -22,9 +22,6 @@ export default {
             type:String|Number,
             required: true
         },
-        lineColor:{
-            type:String
-        },
         position:{
             type: String,
             validator(value){
@@ -36,34 +33,24 @@ export default {
         },
         iconSize:{
             type: String,
-            default: 'small'
         }
     },
     
     methods:{
         onClick(){
-            this.eventBus.$emit('update:selected',this.name)
-        },
-        setLine(){
-            this.$refs.line.style.borderBottomColor=`${this.lineColor}`           
-            // this.$refs.line.style.borderBottom=`1px solid ${this.lineColor}`          
+            this.eventBus.$emit('update:selected',this.name,this)
         },
     },
     computed:{
         setClass(){
             return{
-                'vi-tabs-item-active':this.active,
+                'vi-tabs-item-active': this.active,
                 [`vi-tabs-item-${this.position}`]: this.position
             }
         }
     },
-    mounted(){
-        this.setLine()
-    },
     created(){
-        // console.log(this.name)
         this.eventBus.$on('update:selected',(name,vm)=>{
-            // console.log(vm.$refs)
             if(this.name===name){
                 this.active=true
             }else{
@@ -78,10 +65,10 @@ export default {
     .vi-tabs-item{
         display: flex;
         align-items: center;
-        padding: 0.3em 0.3em;
-        // vertical-align: middle;
+        padding: 0;
+        margin: 0;
+        padding: 0.5em 0.4em;
         .vi-tabs-item-icon-wrapper{
-            // vertical-align: middle;
             .vi-tabs-item-icon{
                 vertical-align: middle;
             }
@@ -96,9 +83,6 @@ export default {
         }
         &.vi-tabs-item-top{
             flex-direction: column;
-        }
-        &.vi-tabs-item-active{       
-            border-bottom: 1px solid;
         }
     }
     

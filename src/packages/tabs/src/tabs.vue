@@ -23,15 +23,10 @@ export default {
         return {eventBus:this.eventBus}
     },
     mounted(){
-        // console.log(this.eventBus)
-        // console.log(this.selected)
         this.$children.forEach((vm)=>{
-            // console.log(vm.$options.name)
             if(vm.$options.name==='ViTabsBar'){
                 vm.$children.forEach((vmChild)=>{
-                    // console.log(vmChild.name)
                     if(vmChild.$options.name==='ViTabsItem'&&vmChild.name===this.selected){
-                        // console.log(this.selected)
                         this.eventBus.$emit('update:selected',this.selected,vmChild)
                     }
                 })

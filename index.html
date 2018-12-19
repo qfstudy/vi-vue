@@ -85,9 +85,15 @@
       margin-top: 100px;
       margin-left: 10px;
     }
-    /* .tabs{
-      width: 50%;
-    } */
+    .tabs{
+      /* width: 50%; */
+      /* color: #e1e1; */
+    }
+    .vi-tabs-item-icon{
+      /* fill: red; */
+      width: 60px;
+      height:60px;
+    }
   </style>
 </head>
 
@@ -215,7 +221,7 @@
         <button @click="showToast4">点我4</button>
     </div> -->
     <vi-tabs class="tabs" :selected.sync="selectedTab">
-      <vi-tabs-bar color="teal" >
+      <vi-tabs-bar color="teal" space="around" line-color="aqua">
         <vi-tabs-item name="woman" line-color="aqua">标签1</vi-tabs-item>
         <vi-tabs-item name="finance" line-color="aqua">标签2</vi-tabs-item>
         <vi-tabs-item name="sport" line-color="aqua">标签3</vi-tabs-item>
@@ -227,10 +233,10 @@
       </vi-tabs-body>
     </vi-tabs>
     <vi-tabs class="tabs" :selected.sync="selectedTab">
-        <vi-tabs-bar color="teal" >
-          <vi-tabs-item name="woman" icon-name="loading" line-color="aqua">标签1</vi-tabs-item>
-          <vi-tabs-item name="finance" icon-name="loading" line-color="aqua">标签2</vi-tabs-item>
-          <vi-tabs-item name="sport" icon-name="loading" line-color="aqua">标签3</vi-tabs-item>
+        <vi-tabs-bar color="teal" space="between" line-color="aqua"> 
+          <vi-tabs-item name="woman" icon-name="loading" icon-size="small">标签1</vi-tabs-item>
+          <vi-tabs-item name="finance" icon-name="loading" icon-size="small">标签2</vi-tabs-item>
+          <vi-tabs-item name="sport" icon-name="loading" icon-size="small">标签3</vi-tabs-item>
         </vi-tabs-bar>
         <vi-tabs-body>
           <vi-tabs-content name="woman">标签1的内容</vi-tabs-content>
@@ -239,10 +245,10 @@
         </vi-tabs-body>
       </vi-tabs>
     <vi-tabs class="tabs" :selected.sync="selectedTab">
-        <vi-tabs-bar color="teal" >
-          <vi-tabs-item name="woman" icon-name="search" line-color="aqua" position="right">标签1</vi-tabs-item>
-          <vi-tabs-item name="finance" icon-name="search" line-color="aqua" position="right">标签2</vi-tabs-item>
-          <vi-tabs-item name="sport" icon-name="search" line-color="aqua" position="right">标签3</vi-tabs-item>
+        <vi-tabs-bar color="teal" space="center" line-color="aqua">
+          <vi-tabs-item name="woman" icon-name="search" icon-size="large" position="right">标签1</vi-tabs-item>
+          <vi-tabs-item name="finance" icon-name="search" icon-size="large" position="right">标签2</vi-tabs-item>
+          <vi-tabs-item name="sport" icon-name="search" icon-size="large" position="right">标签3</vi-tabs-item>
         </vi-tabs-bar>
         <vi-tabs-body>
           <vi-tabs-content name="woman">标签1的内容</vi-tabs-content>
@@ -251,10 +257,10 @@
         </vi-tabs-body>
       </vi-tabs>
       <vi-tabs class="tabs" :selected.sync="selectedTab">
-          <vi-tabs-bar color="teal">
-            <vi-tabs-item name="woman" line-color="aqua" icon-name="error"  position="top">标签1</vi-tabs-item>
-            <vi-tabs-item name="finance" line-color="aqua" icon-name="error" position="top">标签2</vi-tabs-item>
-            <vi-tabs-item name="sport" line-color="aqua" icon-name="error"  position="top">标签3</vi-tabs-item>
+          <vi-tabs-bar color="teal" space="end" line-color="aqua">
+            <vi-tabs-item name="woman" icon-name="error"  position="top">标签1</vi-tabs-item>
+            <vi-tabs-item name="finance" icon-name="error" position="top">标签2</vi-tabs-item>
+            <vi-tabs-item name="sport" icon-name="error"  position="top">标签3</vi-tabs-item>
           </vi-tabs-bar>
           <vi-tabs-body>
             <vi-tabs-content name="woman">标签1的内容</vi-tabs-content>

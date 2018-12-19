@@ -1,5 +1,5 @@
 <template>
-    <div class="vi-tabs-content" :class="setClass" v-if="active">
+    <div class="vi-tabs-content" v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -19,16 +19,8 @@ export default {
             required: true
         },
     },
-    computed:{
-        setClass(){
-            return{
-                'vi-tabs-content-active':this.active
-            }
-        }
-    },
     created(){
         this.eventBus.$on('update:selected',(name)=>{
-            // console.log(name)
             if(this.name===name){
                 this.active=true
             }else{
@@ -41,11 +33,6 @@ export default {
 
 <style lang="scss" scoped>
     .vi-tabs-content{
-        // border: 1px solid cadetblue;
-        padding: 0.2em 0;
-        // background: red;
-    }
-    .vi-tabs-content-active{
-        // background: goldenrod;
+        padding: 0.1em 0;        
     }
 </style>
