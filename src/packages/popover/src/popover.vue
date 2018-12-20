@@ -1,6 +1,6 @@
 <template>
-    <div class="vi-popover" @click="xxx">
-        <div v-if="visible" class="vi-popover-content">
+    <div class="vi-popover" @click.stop="xxx">
+        <div v-if="visible" class="vi-popover-content" @click.stop>
             <slot name="content"></slot>
         </div>
         <div>
@@ -17,8 +17,22 @@ export default {
     },
     methods:{
         xxx(){
-            console.log(1)
             this.visible=!this.visible
+            // console.log('切换visible')
+            if(this.visible===true){
+                this.$nextTick(()=>{
+                    // console.log('新增document click监听')
+                    let eventHandle=()=>{
+                        // console.log('点击Body就关闭popover')
+                        this.visible=false
+                        console.log('document隐藏')
+                        document.removeEventListener('click',eventHandle)                        
+                    }
+                    document.addEventListener('click',eventHandle)
+                })                 
+            }else{
+                console.log('vm隐藏')
+            }
         }
     }
 }
