@@ -1,7 +1,6 @@
 <template>
-    <div class="vi-popover" @click.stop="xxx">
-        <div ref="contentWrapper" class="vi-popover-content"
-        v-if="visible">
+    <div class="vi-popover" @click="onClick" ref="popover">
+        <div ref="contentWrapper" class="vi-popover-content" v-if="visible">
             <slot name="content"></slot>
         </div>
         <span ref="triggerWrapper" class="vi-popover-button">
@@ -17,24 +16,40 @@ export default {
         return {visible:false}
     },
     methods:{
-        xxx(){
-            this.visible=!this.visible
-            if(this.visible===true){
-                this.$nextTick(()=>{
-                    document.body.appendChild(this.$refs.contentWrapper)
-                    let{width,height,left,top}=this.$refs.triggerWrapper.getBoundingClientRect()
-                    // console.log(width,height,left,top)
-                    this.$refs.contentWrapper.style.left=left+'px'
-                    this.$refs.contentWrapper.style.top=top+'px'
-                    let eventHandle=()=>{
-                        this.visible=false
-                        // console.log('document隐藏')
-                        document.removeEventListener('click',eventHandle)                        
-                    }
-                    document.addEventListener('click',eventHandle)
-                })                 
-            }else{
-                console.log('vm隐藏')
+        positionContent(){
+            document.body.appendChild(this.$refs.contentWrapper)
+            let{width,height,left,top}=this.$refs.triggerWrapper.getBoundingClientRect()
+            // console.log(width,height,left,top)
+            this.$refs.contentWrapper.style.left=left+window.scrollX+'px'
+            this.$refs.contentWrapper.style.top=top+window.scrollY+'px'
+        },
+        onClickDocument(e){
+            if (this.$refs.popover &&
+                (this.$refs.popover===e.target || this.$refs.popover.contains(e.target))
+            ){return}
+            this.close()  
+        },
+        listenToDocument(){
+            document.addEventListener('click',this.onClickDocument)
+        },
+        open(){
+            this.visible=true
+            this.$nextTick(()=>{
+                this.positionContent()
+                this.listenToDocument()
+            })     
+        },
+        close(){
+            this.visible=false
+            document.removeEventListener('click',this.onClickDocument)                            
+        },
+        onClick(event){
+            if(this.$refs.triggerWrapper.contains(event.target)){
+                if(this.visible===true){
+                    this.close()
+                }else{
+                    this.open()  
+                }
             }
         }
     },
@@ -50,6 +65,7 @@ export default {
         display: inline-block;
         vertical-align: top;
         position: relative;
+        border: 1px solid teal;
     }
     .vi-popover-content{
         position: absolute;
