@@ -49,6 +49,9 @@ new Vue({
     selectedTab:'sport'//tabs组件
   },
   methods: {
+    yyy(){
+      console.log('yyy')
+    },
     // aa(value){
     //   console.log(52)
     //   console.log(value)
