@@ -22,17 +22,28 @@ export default {
     provide:function(){
         return {eventBus:this.eventBus}
     },
-    mounted(){
-        this.$children.forEach((vm)=>{
-            if(vm.$options.name==='ViTabsBar'){
-                vm.$children.forEach((vmChild)=>{
-                    if(vmChild.$options.name==='ViTabsItem'&&vmChild.name===this.selected){
-                        this.eventBus.$emit('update:selected',this.selected,vmChild)
-                    }
-                })
+    methods:{
+        checkChildren(){
+            if(this.$children.length===0){
+                console && console.warn && console.warn('tabs的子组件应该是tabs-bar和tabs-body，但是你没有写子组件')
             }
+        },
+        selectTab(){
+            this.$children.forEach((vm)=>{
+                if(vm.$options.name==='ViTabsBar'){
+                    vm.$children.forEach((vmChild)=>{
+                        if(vmChild.$options.name==='ViTabsItem'&&vmChild.name===this.selected){
+                            this.eventBus.$emit('update:selected',this.selected,vmChild)
+                        }
+                    })
+                }
 
-        })
+            })
+        }
+    },
+    mounted(){
+        this.checkChildren()
+        this.selectTab()
     },
 }
 </script>

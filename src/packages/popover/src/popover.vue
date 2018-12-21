@@ -24,8 +24,8 @@ export default {
             this.$refs.contentWrapper.style.top=top+window.scrollY+'px'
         },
         onClickDocument(e){
-            if (this.$refs.popover &&
-                (this.$refs.popover===e.target || this.$refs.popover.contains(e.target))
+            if (this.$refs.contentWrapper &&
+                (this.$refs.contentWrapper===e.target || this.$refs.contentWrapper.contains(e.target))
             ){return}
             this.close()  
         },
