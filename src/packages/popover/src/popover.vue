@@ -24,6 +24,9 @@ export default {
             this.$refs.contentWrapper.style.top=top+window.scrollY+'px'
         },
         onClickDocument(e){
+            // if (this.$refs.popover &&
+            //     (this.$refs.popover===e.target || this.$refs.popover.contains(e.target))
+            // ){return}
             if (this.$refs.contentWrapper &&
                 (this.$refs.contentWrapper===e.target || this.$refs.contentWrapper.contains(e.target))
             ){return}
@@ -61,17 +64,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    $boder-color: #333;
     .vi-popover{
         display: inline-block;
         vertical-align: top;
         position: relative;
-        border: 1px solid teal;
+        .vi-popover-button{
+            display: inline-block;
+        }
     }
+    
     .vi-popover-content{
         position: absolute;
-        border: 1px solid red;
-        box-shadow: 0 0 3px rgba(0,0,0,0.5);
-        transform: translateY(-100%)
+        border: 1px solid $boder-color;
+        border-radius: 4px;
+        // box-shadow: 0 0 3px rgba(0,0,0,0.5);
+        filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
+        background: white;
+        transform: translateY(-100%);
+        margin-top: -10px;
+        padding: .3em 0.6em;
+        max-width: 16em; //有待解决自动检测高度
+        word-break: break-all;
+        &::before, &::after{
+            content: '';
+            display: block;
+            border: 10px solid transparent;   
+            width: 0;
+            height: 0;        
+            position: absolute;            
+            left: 10px;
+        }
+        &::before{
+            border-top-color: black;
+            top: 100%;
+        }
+        &::after{
+            border-top-color: white;
+            top: calc(100% - 1px);
+        }
     }
     
 </style>
