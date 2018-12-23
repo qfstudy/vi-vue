@@ -270,7 +270,7 @@
           </vi-tabs-body>
         </vi-tabs> -->
         <div class="popover" style="overflow: hidden;padding: 5px;border: 1px solid greenyellow;" @click="yyy">
-          <vi-popover>
+          <vi-popover position="bottom">
             <template slot="content">
               <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
             </template>
@@ -281,6 +281,18 @@
               <div>popoverhjkfdhforiegjiiogjjjjjjjjjjjjjjkdf</div>
             </template>
             <vi-button>点击</vi-button>
+          </vi-popover>
+          <vi-popover position="left">
+            <template slot="content">
+              <div>popover内容</div>
+            </template>
+            <vi-button type="primary">点击</vi-button>
+          </vi-popover>
+          <vi-popover position="right">
+            <template slot="content">
+              <div>popover内容popover内容popover内容</div>
+            </template>
+            <vi-button type="primary">点击</vi-button>
           </vi-popover>
         </div>
         
