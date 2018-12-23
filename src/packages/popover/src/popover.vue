@@ -25,16 +25,14 @@ export default {
             this.$refs.popover.addEventListener('mouseenter',this.open)
             this.$refs.popover.addEventListener('mouseleave',this.close)
         }
-        // this.$refs.popover.addEventListener(this.openEvent,(event)=>{
-        //     if(this.$refs.triggerWrapper.contains(event.target)){
-        //         this.open()
-        //     }
-        // })
-        // this.$refs.popover.addEventListener(this.closeEvent,(event)=>{
-        //     if(this.$refs.triggerWrapper.contains(event.target)){
-        //         this.close()
-        //     }
-        // })
+    },
+    destroyed(){
+         if(this.trigger==='click'){
+            this.$refs.popover.removeEventListener('click',this.onClick)
+        }else{
+            this.$refs.popover.removeEventListener('mouseenter',this.open)
+            this.$refs.popover.removeEventListener('mouseleave',this.close)
+        }
     },
     computed:{
         openEvent(){
@@ -167,10 +165,12 @@ export default {
                 left: 10px;
             }
             &::before{
+                border-bottom: none;
                 border-top-color: black;
                 top: 100%;
             }
             &::after{
+                border-bottom: none;
                 border-top-color: white;
                 top: calc(100% - 1px);
             }
@@ -181,10 +181,12 @@ export default {
                 left: 10px;
             }
             &::before{
+                border-top: none;
                 border-bottom-color: black;
                 bottom: 100%;
             }
             &::after{
+                border-top: none;
                 border-bottom-color: white;
                 bottom: calc(100% - 1px);
             }
@@ -197,10 +199,12 @@ export default {
                 top: 50%;  
             }
             &::before{
+                border-right: none;
                 border-left-color: black;
                 left: 100%;
             }
             &::after{
+                border-right: none;
                 border-left-color: white;
                 left: calc(100% - 1px);
             }
@@ -209,7 +213,8 @@ export default {
             margin-left: 10px;
             &::before, &::after{         
                 transform: translateY(-50%);
-                top: 50%;  
+                top: 50%; 
+                border-left: none; 
             }
             &::before{
                 border-right-color: black;
