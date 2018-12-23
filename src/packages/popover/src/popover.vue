@@ -26,29 +26,46 @@ export default {
         }
     },
     methods:{
-        positionContent(){
-            // const contentWrapper=this.$refs.contentWrapper
+        positionContent(){            
             const {contentWrapper,triggerWrapper}=this.$refs
             document.body.appendChild(contentWrapper)
-
-            let{width,height,left,top}=triggerWrapper.getBoundingClientRect()
-            if(this.position==='top'){
-                contentWrapper.style.left=left+window.scrollX+'px'
-                contentWrapper.style.top=top+window.scrollY+'px'
+            const{width,height,left,top}=triggerWrapper.getBoundingClientRect()
+            const {height: height2}=contentWrapper.getBoundingClientRect()
+            let positionValue={
+                top:{
+                    top: top+window.scrollY,
+                    left: left+window.scrollX
+                },
+                bottom:{
+                    top: top+height+window.scrollY,
+                    left: left+window.scrollX
+                },
+                left:{
+                    top: top + window.scrollY + (height - height2) / 2,
+                    left: left+window.scrollX
+                },
+                right:{
+                    top: top + window.scrollY + (height - height2) / 2 ,
+                    left: left+window.scrollX+width
+                }
             }
-            if(this.position==='bottom'){
-                contentWrapper.style.left=left+window.scrollX+'px'
-                contentWrapper.style.top=top+height+window.scrollY+'px'
-            }
-            if(this.position==='left'){
-                contentWrapper.style.left=left+window.scrollX+'px'
-                let {height: height2}=contentWrapper.getBoundingClientRect()
-                contentWrapper.style.top=top + window.scrollY + (height - height2) / 2 + 'px'            
-            }else if(this.position==='right'){
-                contentWrapper.style.left=left+window.scrollX+width+'px'
-                let {height: height2}=contentWrapper.getBoundingClientRect()
-                contentWrapper.style.top=top + window.scrollY + (height - height2) / 2 + 'px' 
-            }
+            contentWrapper.style.left=positionValue[this.position].left +'px'
+            contentWrapper.style.top=positionValue[this.position].top +'px'                    
+            // if(this.position==='top'){
+            //     contentWrapper.style.left= +'px'
+            //     contentWrapper.style.top= +'px'
+            // }
+            // if(this.position==='bottom'){
+            //     contentWrapper.style.left= +'px'
+            //     contentWrapper.style.top= +'px'
+            // }
+            // if(this.position==='left'){
+            //     contentWrapper.style.left= +'px'
+            //     contentWrapper.style.top= + 'px'            
+            // }else if(this.position==='right'){
+            //     contentWrapper.style.left= +'px'                
+            //     contentWrapper.style.top= + 'px' 
+            // }
         },
         onClickDocument(e){
             // if (this.$refs.popover &&
