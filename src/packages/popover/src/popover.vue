@@ -18,38 +18,6 @@ export default {
             visible:false,
         }
     },
-    mounted(){
-        if(this.trigger==='click'){
-            this.$refs.popover.addEventListener('click',this.onClick)
-        }else{
-            this.$refs.popover.addEventListener('mouseenter',this.open)
-            this.$refs.popover.addEventListener('mouseleave',this.close)
-        }
-    },
-    destroyed(){
-         if(this.trigger==='click'){
-            this.$refs.popover.removeEventListener('click',this.onClick)
-        }else{
-            this.$refs.popover.removeEventListener('mouseenter',this.open)
-            this.$refs.popover.removeEventListener('mouseleave',this.close)
-        }
-    },
-    computed:{
-        openEvent(){
-            if(this.trigger==='click'){
-                return 'click'
-            }else{
-                return 'mouseenter'
-            }
-        },
-        closeEvent(){
-            if(this.trigger==='click'){
-                return 'click'
-            }else{
-                return 'mouseleave'
-            }
-        }
-    },
     props:{
         position:{
             type: String,
@@ -66,12 +34,15 @@ export default {
             }
         }
     },
+    
     methods:{
         positionContent(){            
             const {contentWrapper,triggerWrapper}=this.$refs
             document.body.appendChild(contentWrapper)
             const{width,height,left,top}=triggerWrapper.getBoundingClientRect()
             const {height: height2}=contentWrapper.getBoundingClientRect()
+            // console.log(height2)
+            // this.$refs.popover.style.marginTop=height2+'px'
             let positionValue={
                 top:{
                     top: top+window.scrollY,
@@ -125,7 +96,39 @@ export default {
                 }
             }
         }
-    }
+    },
+    computed:{
+        openEvent(){
+            if(this.trigger==='click'){
+                return 'click'
+            }else{
+                return 'mouseenter'
+            }
+        },
+        closeEvent(){
+            if(this.trigger==='click'){
+                return 'click'
+            }else{
+                return 'mouseleave'
+            }
+        }
+    },
+    mounted(){
+        if(this.trigger==='click'){
+            this.$refs.popover.addEventListener('click',this.onClick)
+        }else{
+            this.$refs.popover.addEventListener('mouseenter',this.open)
+            this.$refs.popover.addEventListener('mouseleave',this.close)
+        }
+    },
+    destroyed(){
+         if(this.trigger==='click'){
+            this.$refs.popover.removeEventListener('click',this.onClick)
+        }else{
+            this.$refs.popover.removeEventListener('mouseenter',this.open)
+            this.$refs.popover.removeEventListener('mouseleave',this.close)
+        }
+    },
 }
 </script>
 
@@ -136,6 +139,7 @@ export default {
         vertical-align: top;
         position: relative;
         .vi-popover-button{
+            // margin-top:100px; 
             display: inline-block;
         }
     }
@@ -147,7 +151,8 @@ export default {
         // box-shadow: 0 0 3px rgba(0,0,0,0.5);
         filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
         background: white;
-        padding: .2em 0.2em;
+        padding: 0.2em 0.2em;
+        // margin-top: 200px; 
         max-width: 16em; //有待解决自动检测高度
         word-break: break-all;
         &::before, &::after{
