@@ -170,7 +170,7 @@ export default {
                 left: 10px;
             }
             &::before{
-                border-bottom: none;
+                border-bottom: none;//可以设置button:z-index:1
                 border-top-color: black;
                 top: 100%;
             }
