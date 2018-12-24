@@ -51,7 +51,8 @@ new Vue({
   el: '#app',
   data:{
     input1:'',
-    selectedTab:'sport'//tabs组件
+    selectedTab:'sport',//tabs组件
+    selectedCola: '2'
   },
   methods: {
     yyy(){
