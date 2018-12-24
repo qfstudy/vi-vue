@@ -22,6 +22,8 @@ import TabsItem from './packages/tabs/src/tabs-item'
 import TabsBody from './packages/tabs/src/tabs-body'
 import TabsContent from './packages/tabs/src/tabs-content'
 import Popover from './packages/popover/src/popover'
+import Collapse from './packages/collapse/src/collapse'
+import CollapseItem from './packages/collapse/src/collapse-item'
 
 Vue.component('vi-button',Button)
 Vue.component('vi-icon',Icon)
@@ -41,6 +43,9 @@ Vue.component('vi-tabs-item',TabsItem)
 Vue.component('vi-tabs-body',TabsBody)
 Vue.component('vi-tabs-content',TabsContent)
 Vue.component('vi-popover',Popover)
+Vue.component('vi-collapse',Collapse)
+Vue.component('vi-collapse-item',CollapseItem)
+
 
 new Vue({
   el: '#app',

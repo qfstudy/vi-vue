@@ -99,7 +99,7 @@
 
 <body>
   <!-- <div style="border:1px solid blue;height: 500px;"></div> -->
-  <div id="app" style="padding-top: 100px;padding-left: 100px;border: 1px solid red;">
+  <div id="app">
     <!-- <div class="icon">
       <vi-icon class="test" vi-icon-name="info" vi-icon-size="small"></vi-icon>
       <vi-icon vi-icon-name="search" vi-icon-size=small></vi-icon>
@@ -269,7 +269,7 @@
             <vi-tabs-content name="sport">标签3的内容</vi-tabs-content>
           </vi-tabs-body>
         </vi-tabs> -->
-        <div class="popover" style="overflow: hidden;padding: 5px;border: 1px solid greenyellow;" @click="yyy">
+        <!-- <div class="popover" style="overflow: hidden;padding: 5px;border: 1px solid greenyellow;" @click="yyy">
           <vi-popover position="top">
             <template slot="content">
               <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
@@ -294,9 +294,9 @@
             </template>
             <vi-button type="primary">点击</vi-button>
           </vi-popover>
-        </div>
+        </div> -->
 
-        <div class="popover" style="overflow: hidden;padding-top: 50px;border: 1px solid greenyellow;" @click="yyy">
+        <!-- <div class="popover" style="overflow: hidden;padding-top: 50px;border: 1px solid greenyellow;" @click="yyy">
           <vi-popover position="bottom" trigger="hover">
             <template slot="content">
               <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
@@ -322,8 +322,15 @@
             <vi-button type="primary">点击</vi-button>
           </vi-popover>
         </div>
-        
+         -->
 
+         <div class="collapse" style="padding: 100px;">
+           <vi-collapse>
+             <vi-collapse-item title="标题1">内容1</vi-collapse-item>
+             <vi-collapse-item title="标题2">内容2</vi-collapse-item>
+             <vi-collapse-item title="标题3">内容3</vi-collapse-item>
+           </vi-collapse>
+         </div>
       </div>
 </body>
 
