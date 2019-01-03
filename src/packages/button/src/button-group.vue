@@ -8,7 +8,7 @@
 import Button from './button'
 import Icon from '../../icon/src/icon'
 export default {
-    name: 'viButtonGroup', 
+    name: 'ViButtonGroup', 
     components:{
         'vi-icon':Icon,
         'vi-button':Button
@@ -23,7 +23,7 @@ export default {
         border: 1px solid #e1e1e1;
         border-radius: 4px;
         cursor: pointer;
-        & .vi-button{
+        .vi-button{
             border-radius: 0;
             &:not(:first-child){
                 margin-left: 1px;
