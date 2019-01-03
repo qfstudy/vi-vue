@@ -14,7 +14,7 @@ export default {
     name: 'ViCollapseItem',
     data(){
         return{
-            open: false
+            open: false,
         }
     },
     props:{
@@ -30,26 +30,25 @@ export default {
     methods:{
         toggle(){
             if(this.open){
-                this.open=false
+                this.eventBus.$emit('update:removeSelected',this.name)
             }else{
-                // this.open=true
-                this.eventBus.$emit('update:selected',this.name)
+                this.eventBus.$emit('update:addSelected',this.name)
             }
-        },
-        close(){
-            this.open=false
-        },
-        show(){
-            this.open=true
         }
     },
     
     mounted(){
-        this.eventBus.$on('update:selected',(name)=>{
-            if(name!==this.name){
-                this.close()
-            }else{
-                this.show()
+        this.eventBus.$on('update:selected',(names,single)=>{
+            // console.log(names,single)            
+            if(names.indexOf(this.name)>=0){
+                if(single&&names.length>1){
+                    // console.log('展示的内容不能多选')
+                    throw console.error('single为true,默认展示的内容只能有一个');
+                }else{
+                    this.open=true   
+                }                            
+            }else{               
+                this.open=false                
             }
         })
     }

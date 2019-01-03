@@ -52,7 +52,9 @@ new Vue({
   data:{
     input1:'',
     selectedTab:'sport',//tabs组件
-    selectedCola: '2'
+    selectedCola: ['2','1'],
+    selectedCola1: ['2','3'],
+    selectedCola2:['3']
   },
   methods: {
     yyy(){
