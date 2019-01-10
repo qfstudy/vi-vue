@@ -7,7 +7,9 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "unit-test": "npx webpack --config webpack.test.conf.js --no-cache & npx karma start",
+    "dev-test": "npx webpack --watch --config webpack.test.conf.js --no-cache & npx karma start"
   },
   "dependencies": {
     "vue": "^2.5.2"

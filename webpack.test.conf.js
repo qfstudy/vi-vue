@@ -11,7 +11,7 @@ module.exports={
         test: './test/index.js'
     },
     output:{
-        filename: './dist/[name].js',
+        filename: './testDist/[name].js',
     },
     resolve: {
         extensions: ['.js', '.vue', '.json'],
