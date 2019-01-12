@@ -891,6 +891,8 @@ module.exports = function (exec) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__button_test_js__ = __webpack_require__(14);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__input_test_js__ = __webpack_require__(45);
+
 
 
 /***/ }),
@@ -13937,6 +13939,127 @@ if (typeof Object.create === 'function') {
   }
 }
 
+
+/***/ }),
+/* 45 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(15);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__src_packages_button_src_button__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_assert__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_assert___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_assert__);
+
+
+
+var expect = chai.expect;
+
+__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].config.productionTip = false;
+__WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].config.devtools = false;
+
+describe('Button', function () {
+  var Constructor = __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].extend(__WEBPACK_IMPORTED_MODULE_1__src_packages_button_src_button__["a" /* default */]);
+  it('存在', function () {
+    expect(__WEBPACK_IMPORTED_MODULE_1__src_packages_button_src_button__["a" /* default */]).to.be.ok;
+    // console.log(Button)
+  });
+  it('可以设置icon', function () {
+    var vm = new Constructor({
+      propsData: {
+        iconName: 'setting'
+      }
+    }).$mount();
+    var useElement = vm.$el.querySelector('use');
+    // console.log(useElement)
+    expect(useElement.getAttribute('xlink:href')).to.equal('#vi-setting');
+    vm.$destroy();
+  });
+  it('可以设置iconSize', function () {
+    var vm = new Constructor({
+      propsData: {
+        iconName: 'setting',
+        iconSize: 'large'
+      }
+    }).$mount();
+    // console.log(vm)
+    var svgElement = vm.$el.querySelector('svg');
+    // console.log(svgElement.getAttribute('class'))
+    expect(svgElement.getAttribute('class')).to.include('vi-icon-large');
+    vm.$destroy();
+  });
+  it('可以设置icon为圆形', function () {
+    var Constructor = __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].extend(__WEBPACK_IMPORTED_MODULE_1__src_packages_button_src_button__["a" /* default */]);
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+    var vm = new Constructor({
+      propsData: {
+        type: 'primary',
+        iconName: 'setting',
+        iconSize: 'large'
+      }
+    }).$mount(div);
+    console.log(vm);
+    afterEach(function () {
+      var circle = vm.$el.querySelector('.vi-button');
+      console.log(circle);
+      console.log(3);
+      // done()
+    });
+    // expect(getComputedStyle(circle).borderRadius).to.eq('50%')
+    vm.$destroy();
+  });
+  it('icon默认的order是1', function () {
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+    var vm = new Constructor({
+      propsData: {
+        iconName: 'setting'
+      }
+    }).$mount(div);
+    var icon = vm.$el.querySelector('.vi-button-icon');
+    // console.log(getComputedStyle(icon).order)
+    expect(getComputedStyle(icon).order).to.eq('1');
+    vm.$el.remove();
+    vm.$destroy();
+  });
+  it('设置iconPosition可以改变order', function () {
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+    var vm = new Constructor({
+      propsData: {
+        iconName: 'setting',
+        iconPosition: 'right'
+      }
+    }).$mount(div);
+    var icon = vm.$el.querySelector('.vi-button-icon');
+    // console.log(getComputedStyle(icon).order)
+    expect(getComputedStyle(icon).order).to.eq('2');
+    vm.$el.remove();
+    vm.$destroy();
+  });
+  it('点击button触发click事件', function () {
+    var vm = new Constructor({
+      propsData: {
+        iconName: 'setting'
+      }
+    }).$mount();
+    var callback = sinon.fake();
+    vm.$on('click', callback);
+    vm.$el.click();
+    expect(callback).to.have.been.called;
+  });
+  it('可以设置button为禁止点击', function () {
+    var div = document.createElement('div');
+    document.body.appendChild(div);
+    var vm = new Constructor({
+      propsData: {
+        disabled: "disabled"
+      }
+    }).$mount();
+    var button = vm.$el.querySelector('.vi-button');
+    // console.log(button)
+  });
+});
 
 /***/ })
 /******/ ]);

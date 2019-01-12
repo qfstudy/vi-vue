@@ -60,9 +60,9 @@ new Vue({
     yyy(){
       console.log('yyy')
     },
-    aa(value){
+    aa(event){
       console.log(52)
-      console.log(value)
+      console.log(event)
     },
 
 

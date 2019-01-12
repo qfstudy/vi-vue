@@ -36,7 +36,7 @@
             :placeholder="placeholder" 
             :value="currentValue"
             @input="handleInput($event)"
-            @change="changeIcon($event)"
+            @change="changeInput($event)"
             />
         </template>
         <template>
@@ -63,7 +63,7 @@ export default {
             type: String
         },
         value:{
-            type: [String,Number]
+            // type: [String,Number]
         },
         clearable:{
             type: Boolean,
@@ -83,22 +83,20 @@ export default {
         }
     },
     methods:{
-        handleInput(event){        
+        handleInput(event){ 
+            this.$emit('input', event);        
             let value=event.target.value
             this.setCurrentValue(value)
-            // console.log(this.currentValue)
-            this.$emit('input', value);  
             this.handleShowIcon()          
         },
-        changeIcon(event){
+        changeInput(event){
+            this.$emit('change', event);
             let value=event.target.value
-           
         },
         setCurrentValue(value){
             this.currentValue=value
         },
         handleHideIcon(value){
-            // console.log(this)
             if(this.clearable){
                 this.hideIcon=true
                 this.showIcon=false
@@ -115,7 +113,6 @@ export default {
             this.handleHideIcon()
         },
         clickIcon(event){
-            // console.log(event)
             this.$emit('click',event)
         }
     },
