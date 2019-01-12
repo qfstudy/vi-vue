@@ -1,8 +1,8 @@
 <template>
     <div class="vi-toast-wrapper">
-        <div class="vi-toast-slot">
+        <!-- <div class="vi-toast-slot">
             <slot></slot>
-        </div>
+        </div> -->
         <div class="vi-toast" :class="positionClass" ref="toast">
             <div v-if="message" class="vi-toast-message-wrapper">
                 <span class="vi-toast-message">{{message}}</span>
@@ -41,7 +41,7 @@ export default {
         },
         duration:{
             type: Number,
-            default: 3,
+            default: 1,
             validator(value){
                 if(value<0){
                     this.autoClose=false                  
@@ -59,7 +59,8 @@ export default {
     },
     methods:{
         closeToast(){
-            this.$el.lastChild.remove()
+            // this.$el.lastChild.remove()
+            this.$el.remove()
             this.$emit('close')
             this.$destroy()
         },

@@ -23,7 +23,6 @@ export default {
                    currentToast=null
                },
            })
-        //    console.log(toastOptions)
        }
    }
 }
