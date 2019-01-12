@@ -11899,9 +11899,6 @@ module.exports = function (exec) {
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
     name: 'viInput',
@@ -11920,9 +11917,7 @@ module.exports = function (exec) {
         placeholder: {
             type: String
         },
-        value: {
-            // type: [String,Number]
-        },
+        value: {},
         clearable: {
             type: Boolean
         },
@@ -11942,14 +11937,14 @@ module.exports = function (exec) {
     },
     methods: {
         handleInput: function handleInput(event) {
-            this.$emit('input', event);
             var value = event.target.value;
+            this.$emit('input', value);
             this.setCurrentValue(value);
             this.handleShowIcon();
         },
         changeInput: function changeInput(event) {
-            this.$emit('change', event);
             var value = event.target.value;
+            this.$emit('change', event);
         },
         setCurrentValue: function setCurrentValue(value) {
             this.currentValue = value;
@@ -11992,9 +11987,6 @@ module.exports = function (exec) {
                 'vi-input-disabled': this.disabled
             };
         }
-    },
-    updated: function updated() {
-        // console.log(!!(this.currentValue))
     }
 });
 
@@ -13040,10 +13032,15 @@ describe('Input', function () {
       vm.$on('input', callback);
       //触发change事件
       var event = new Event('input');
+      Object.defineProperty(event, 'target', {
+        value: {
+          value: 'hi'
+        },
+        enumerable: true
+      });
       var inputElement = vm.$el.querySelector('input');
       inputElement.dispatchEvent(event);
-      // console.log(event)
-      expect(callback).to.have.been.calledWith(event);
+      expect(callback).to.have.been.calledWith('hi');
     });
   });
 });
@@ -13226,9 +13223,7 @@ var render = function() {
             }
           }
         })
-      ],
-      _vm._v(" "),
-      void 0
+      ]
     ],
     2
   )

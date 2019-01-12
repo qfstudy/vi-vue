@@ -39,9 +39,6 @@
             @change="changeInput($event)"
             />
         </template>
-        <template>
-           
-        </template>
     </div>
 </template>
 
@@ -63,7 +60,6 @@ export default {
             type: String
         },
         value:{
-            // type: [String,Number]
         },
         clearable:{
             type: Boolean,
@@ -83,15 +79,15 @@ export default {
         }
     },
     methods:{
-        handleInput(event){ 
-            this.$emit('input', event);        
+        handleInput(event){       
             let value=event.target.value
-            this.setCurrentValue(value)
+            this.$emit('input', value); 
+            this.setCurrentValue(value) 
             this.handleShowIcon()          
         },
         changeInput(event){
-            this.$emit('change', event);
             let value=event.target.value
+            this.$emit('change', event);
         },
         setCurrentValue(value){
             this.currentValue=value
@@ -135,9 +131,6 @@ export default {
                 'vi-input-disabled':this.disabled
             }
         }
-    },
-    updated(){
-        // console.log(!!(this.currentValue))
     }
 }
 </script>
