@@ -60,10 +60,10 @@ new Vue({
     yyy(){
       console.log('yyy')
     },
-    // aa(value){
-    //   console.log(52)
-    //   console.log(value)
-    // },
+    aa(value){
+      console.log(52)
+      console.log(value)
+    },
 
 
     showToast(){

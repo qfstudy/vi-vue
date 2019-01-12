@@ -11,50 +11,6 @@
       padding: 0;
       box-sizing: border-box;
     }
- 
- /* .grid{
-   margin: 0 2px;
-   margin-top: 10px;
- } */
- /* .row{
-   margin-bottom: 10px;
- } */
- /* .row:last-child{
-    margin-bottom: 0;
- } */
-
-  </style>
-  <style>
-    /* .vi-main{
-      background-color: #E9EEF3;
-      color: #333;
-      text-align: center;
-      line-height: 160px;
-    }
-    .vi-header,.vi-footer{
-      background-color: #B3C0D1;
-      color: #333;
-      text-align: center;
-      line-height: 60px;
-    }
-    .vi-aside{
-      background-color: #D3DCE6;
-      color: #333;
-      text-align: center;
-      line-height: 200px; 
-    }
-    body  .vi-container {
-      margin-bottom: 40px;
-    }
-    
-    .vi-container:nth-child(5) .vi-aside,
-    .vi-container:nth-child(6) .vi-aside {
-      line-height: 260px;
-    }
-    
-    .vi-container:nth-child(7) .vi-aside {
-      line-height: 320px;
-    } */
   </style>
 </head>
 
@@ -69,7 +25,7 @@
       <vi-icon vi-icon-name="clear" vi-icon-size=small></vi-icon>
     </div> -->
 
-    <div class="button">
+    <!-- <div class="button">
       <vi-button >默认</vi-button>
       <vi-button type="default">默认样式</vi-button>
       <vi-button type="primary" icon-name="upload" >主要按钮</vi-button>
@@ -99,17 +55,18 @@
           <vi-button type="primary" icon-name="loading" icon-size=small>上一页</vi-button>
           <vi-button type="primary" icon-name="search" icon-size=small icon-position="right">下一页</vi-button>
       </vi-button-group>
-    </div>
-    <hr>
-    <br>
-    <!-- <div class="input">
+    </div> -->
+    <!-- <hr>
+    <br> -->
+    <div class="input">
       <vi-input placeholder="prefix" suffix-icon="info" @click="aa"></vi-input>
       <vi-input placeholder="prefix" prefix-icon="info" @click="aa"></vi-input>
       <vi-input placeholder="suffix" clearable suffix-icon="error" ></vi-input>
+      <vi-input placeholder="suffix" clearable prefix-icon="error" ></vi-input>
       <vi-input placeholder="请输入内容" readonly v-model="input1"></vi-input>
       <vi-input placeholder="请输入内容" v-model="input1"></vi-input>
       <vi-input disabled placeholder="禁止修改"></vi-input>
-    </div> -->
+    </div>
     <!-- <hr>
     <br>
     <br> -->
@@ -309,6 +266,5 @@
          </div> -->
       </div>
 </body>
-<!-- <script src="./dist/test.js"></script> -->
-<script src="./dist/test.js"></script>
+
 </html>

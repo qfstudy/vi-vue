@@ -1,16 +1,14 @@
 <template>
     <div 
     class="vi-input-wrapper" 
-    :class="[{'vi-input-prefixicon':prefixIcon},{'vi-input-suffixicon':suffixIcon}]" 
-    @mouseover="handleShowIcon($event)"
-    @mouseleave="handleHideIcon($event)"
-    >
+    :class="wrapperClass" 
+    @mouseover="handleShowIcon($event)" 
+    @mouseleave="handleHideIcon($event)">
         <template>
             <span 
             class="vi-input-icon-wrapper" 
-            v-if="clearable&&!disabled" 
-            :class="[{'vi-input-hide':hideIcon},{'vi-input-show':showIcon}]" 
-            >
+            :class="iconWrapperClass" 
+            v-if="clearable&&!disabled&&!readonly">
                 <vi-icon 
                 class="vi-input-icon" 
                 v-if="suffixIcon" 
@@ -32,10 +30,10 @@
             </span>
             <input 
             class="vi-input" 
+            :class="inputClass"
             :disabled="disabled"
             :readonly="readonly"
             :placeholder="placeholder" 
-            :class="[{'vi-input-disabled':disabled}]"
             :value="currentValue"
             @input="handleInput($event)"
             @change="changeIcon($event)"
@@ -87,7 +85,7 @@ export default {
     methods:{
         handleInput(event){        
             let value=event.target.value
-           this.setCurrentValue(value)
+            this.setCurrentValue(value)
             // console.log(this.currentValue)
             this.$emit('input', value);  
             this.handleShowIcon()          
@@ -121,9 +119,25 @@ export default {
             this.$emit('click',event)
         }
     },
-    mounted(){
-        // console.log(!!(this.$props.disabled))
-        // console.log(this.currentValue)
+    computed:{
+        wrapperClass(){
+            return{
+                'vi-input-prefixicon':this.prefixIcon,
+                'vi-input-suffixicon':this.suffixIcon
+            }
+            
+        },
+        iconWrapperClass(){
+            return{
+                'vi-input-hide':this.suffixIcon&&this.hideIcon,
+                'vi-input-show':this.suffixIcon&&this.showIcon
+            }
+        },
+        inputClass(){
+            return{
+                'vi-input-disabled':this.disabled
+            }
+        }
     },
     updated(){
         // console.log(!!(this.currentValue))
@@ -136,7 +150,7 @@ export default {
         display: inline-flex;
         align-items: center;
         vertical-align: middle;
-        border: 1px solid #e1e1e1;
+        border: 1px solid#e1e1e1;
         border-radius: 3px;
         font-family:  Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,\\5FAE\8F6F\96C5\9ED1,Arial,sans-serif;
         .vi-input-icon-wrapper{
