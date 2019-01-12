@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Button from '../src/packages/button/src/button'
-import { equal } from 'assert';
+// import { equal } from 'assert';
 const expect = chai.expect
 
 Vue.config.productionTip=false
@@ -47,11 +47,11 @@ describe('Button',()=>{
         iconSize: 'large'
       }
     }).$mount(div)
-    console.log(vm)
+    // console.log(vm)
     afterEach(()=>{
       const circle=vm.$el.querySelector('.vi-button')
-      console.log(circle)
-      console.log(3)
+      // console.log(circle)
+      // console.log(3)
       // done()
     })
     // expect(getComputedStyle(circle).borderRadius).to.eq('50%')
