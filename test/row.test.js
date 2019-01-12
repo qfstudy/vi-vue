@@ -6,8 +6,8 @@ const expect = chai.expect
 Vue.config.productionTip=false
 Vue.config.devtools=false
 
-describe('grid',()=>{
-  it('存在',()=>{
+describe('grid-row',()=>{
+  it('row和col存在',()=>{
     expect(Row).to.be.ok
     expect(Col).to.be.ok
   })
