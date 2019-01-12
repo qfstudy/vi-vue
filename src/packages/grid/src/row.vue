@@ -32,10 +32,8 @@ export default {
         }
     },
     mounted(){
-        //    console.log(this.$children)
         this.$children.forEach((vm)=>{
             vm.gutter=this.gutter
-            // console.log(vm.gutter)
         })
     }
 }
@@ -44,7 +42,6 @@ export default {
 <style lang="scss" scoped>
     .vi-row{
         display: flex;
-        // justify-content: flex-end;
         &.vi-row-end{
             justify-content: flex-end;
         } 

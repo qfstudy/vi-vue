@@ -12,6 +12,33 @@
       box-sizing: border-box;
     }
   </style>
+  <style>
+      .vi-row {
+        /* background: red; */
+        margin-bottom: 20px;
+      }
+      .el-col {
+        border-radius: 4px;
+      }
+      .bg-purple-dark {
+        background: #99a9bf;
+      }
+      .bg-purple {
+        background: #d3dce6;
+      }
+      .bg-purple-light {
+        background: #e5e9f2;
+      }
+      .grid-content {
+        border: 1px solid red;
+        border-radius: 4px;
+        min-height: 36px;
+      }
+      .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
+      }
+    </style>
 </head>
 
 <body>
@@ -58,55 +85,92 @@
     </div> -->
     <!-- <hr>
     <br> -->
-    <div class="input">
+    <!-- <div class="input">
       <vi-input placeholder="prefix" suffix-icon="info" @click="aa"></vi-input>
       <vi-input placeholder="prefix" prefix-icon="info" @click="aa"></vi-input>
       <vi-input placeholder="suffix" clearable suffix-icon="error" @input="yyy"></vi-input>
-      {{input1}}
       <vi-input placeholder="suffix" v-model="input1"></vi-input>
-      <vi-input placeholder="请输入内容" readonly v-model="input1"></vi-input>
-      <vi-input placeholder="请输入内容" v-model="input1" @input="yyy" @change="aa"></vi-input>
+      <vi-input placeholder="请输入内容" readonly></vi-input>
+      <vi-input placeholder="请输入内容" @change="aa"></vi-input>
       <vi-input disabled placeholder="禁止修改"></vi-input>
-    </div>
+    </div> -->
     <!-- <hr>
     <br>
     <br> -->
 
-    <!-- <div class="grid">
-      <vi-row class="row" :gutter="20">
-        <vi-col class="col" :span="14" :offset="10"><div class="test">gfg</div></vi-col>
-      </vi-row>
-      <vi-row class="row"  :gutter="10">
-        <vi-col class="col" :span="9" :offset="2"><div class="test">dd</div></vi-col>
-        <vi-col class="col" :span="10" :offset="3"><div class="test">s</div></vi-col>
+    <div class="grid">
+      <vi-row class="row">
+        <vi-col class="col" :span="24">
+          <div class="grid-content bg-purple-dark">gfg</div>
+        </vi-col>
       </vi-row>
       <vi-row class="row"  :gutter="20">
-        <vi-col class="col" :span="6" :offse0t="1"><div class="test">d</div></vi-col>
-        <vi-col class="col" :span="8" :offset="6"><div class="test">ss</div></vi-col>
-        <vi-col class="col" :span="8" :offset="3"><div class="test">g</div></vi-col>
+        <vi-col class="col" :span="12">
+          <div class="grid-content bg-purple">dd</div>
+        </vi-col>
+        <vi-col class="col" :span="12">
+          <div class="grid-content bg-purple-light">s</div>
+        </vi-col>
+      </vi-row>
+      <vi-row class="row"  :gutter="0">
+        <vi-col class="col" :span="8" :offse0t="0">
+          <div class="grid-content bg-purple">d</div>
+        </vi-col>
+        <vi-col class="col" :span="8" :offset="0">
+          <div class="grid-content bg-purple-light">ss</div>
+        </vi-col>
+        <vi-col class="col" :span="8" :offset="0">
+          <div class="grid-content bg-purple">g</div>
+        </vi-col>
       </vi-row>
       <vi-row class="row" :gutter="12">
-        <vi-col class="col" :span="1" :offset="2"><div class="test">r</div></vi-col>
-        <vi-col class="col" :span="4" :offset="8"><div class="test">u</div></vi-col>
-        <vi-col class="col" :span="2" :offset="3"><div class="test">o</div></vi-col>
-        <vi-col class="col" :span="3" :offset="1"><div class="test">l</div></vi-col>
+        <vi-col class="col" :span="1" :offset="2">
+          <div class="grid-content bg-purple">r</div>
+        </vi-col>
+        <vi-col class="col" :span="4" :offset="8">
+          <div class="grid-content bg-purple-light">u</div>
+        </vi-col>
+        <vi-col class="col" :span="2" :offset="3">
+          <div class="grid-content bg-purple">o</div>
+        </vi-col>
+        <vi-col class="col" :span="3" :offset="1">
+          <div class="grid-content bg-purple-light">l</div>
+        </vi-col>
       </vi-row>
       <vi-row class="row" :gutter="12">
-        <vi-col class="col" :span="6" ><div class="test">r</div></vi-col>
-        <vi-col class="col" :span="5" ><div class="test">o</div></vi-col>
-        <vi-col class="col" :span="9" ><div class="test">l</div></vi-col>
+        <vi-col class="col" :span="6" >
+          <div class="grid-content bg-purple">r</div>
+        </vi-col>
+        <vi-col class="col" :span="5" >
+          <div class="grid-content bg-purple-light">o</div>
+        </vi-col>
+        <vi-col class="col" :span="9" >
+          <div class="grid-content bg-purple">l</div>
+        </vi-col>
       </vi-row>
       <vi-row class="row" :gutter="12" :justify="'end'">
-        <vi-col class="col" :span="6" ><div class="test">r</div></vi-col>        
-        <vi-col class="col" :span="5" ><div class="test">o</div></vi-col>
-        <vi-col class="col" :span="9" ><div class="test">l</div></vi-col>
+        <vi-col class="col" :span="6" >
+          <div class="grid-content bg-purple-light">r</div>
+        </vi-col>        
+        <vi-col class="col" :span="5" >
+          <div class="grid-content bg-purple">o</div>
+        </vi-col>
+        <vi-col class="col" :span="9" >
+          <div class="grid-content bg-purple-light">l</div>
+        </vi-col>
       </vi-row>
       <vi-row class="row" :gutter="12" :justify="'center'">
-        <vi-col class="col" :span="6" ><div class="test">r</div></vi-col>
-        <vi-col class="col" :span="5" ><div class="test">o</div></vi-col>
-        <vi-col class="col" :span="9" ><div class="test">l</div></vi-col>
+        <vi-col class="col" :span="6" >
+          <div class="grid-content bg-purple">r</div>
+        </vi-col>
+        <vi-col class="col" :span="5" >
+          <div class="grid-content bg-purple-light">o</div>
+        </vi-col>
+        <vi-col class="col" :span="9" >
+          <div class="grid-content bg-purple">l</div>
+        </vi-col>
       </vi-row>
-    </div> -->
+    </div>
     <!-- <hr>
     <br> -->
     <!-- <div class="layout">

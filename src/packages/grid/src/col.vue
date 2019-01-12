@@ -22,17 +22,12 @@ export default {
     },
     computed:{
         colClass(){
-            // console.log(55)
             let{span,offset}=this
-            // console.log(span)
             return[
                 span&&`vi-col-${span}`,
                 offset&&`vi-col-offset-${offset}`
             ]
         },
-        // colOffset(){
-        //     let {offset}=this
-        // },
         colStyle(){
             return{
                 paddingLeft:this.gutter/2 + 'px',
@@ -48,8 +43,6 @@ export default {
     $class-prefix: vi-col-;
     $class-offset: vi-col-offset-;
     .vi-col{
-        // width: 100%;
-        // display: flex;
         @for $n from 1 through 24{
             &.#{$class-prefix}#{$n}{
                 width: ($n/24) * 100%;
