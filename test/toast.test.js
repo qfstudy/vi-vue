@@ -8,7 +8,7 @@ Vue.config.devtools=false
 describe('Toast',()=>{
   const Constructor=Vue.extend(Toast)
   it('Toast存在',()=>{
-    expect(Toast).to.be.ok
+    expect(Toast).to.be.exist
   })
   describe('prop',()=>{
     it('接收autoClose',(done)=>{
@@ -31,18 +31,30 @@ describe('Toast',()=>{
     }) 
     it('接收closeButton',()=>{
       const callback=sinon.fake()
-      let div=document.createElement('div')
-      document.body.appendChild(div)
       const vm =new Constructor({
         propsData:{
+          autoClose: false,
           closeButton:{
             text: '关闭',
-            callback,
+            callback: callback
           }
         }
-      }).$mount(div)
-      let clothButton=vm.$el.querySelector('.vi-toast-close-button')
-      expect(clothButton.textContent.trim()).to.eq('关闭')
+      }).$mount()
+      let closeButton=vm.$el.querySelector('.vi-toast-close-button')
+      expect(closeButton.textContent.trim()).to.eq('关闭')
+      Vue.nextTick(()=>{
+        closeButton.click()
+        expect(callback).to.have.been.called
+      })
+    }) 
+    it('接收position',()=>{
+      const vm =new Constructor({
+        propsData:{
+          position: 'bottom'
+        }
+      }).$mount()
+      let toast=vm.$el.querySelector('.vi-toast')
+      expect(toast.classList.contains('vi-toast-bottom')).to.eq(true)
     }) 
   })
 })

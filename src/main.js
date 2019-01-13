@@ -101,6 +101,9 @@ new Vue({
         message:'提示信息2',
         closeButton:{
           text:'关闭',
+          callback(){
+            console.log('closeButton')
+          }
         },
         autoClose:false,
         position: 'top'

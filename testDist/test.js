@@ -12250,9 +12250,6 @@ if (false) {(function () {
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["a"] = ({
@@ -12268,7 +12265,8 @@ if (false) {(function () {
             type: Object,
             default: function _default() {
                 return {
-                    text: '关闭'
+                    text: '',
+                    callback: undefined
                 };
             }
         },
@@ -12296,7 +12294,9 @@ if (false) {(function () {
     },
     methods: {
         closeToast: function closeToast() {
-            // this.$el.lastChild.remove()
+            if (typeof this.closeButton.callback === 'function') {
+                this.closeButton.callback();
+            }
             this.$el.remove();
             this.$emit('close');
             this.$destroy();
@@ -12313,12 +12313,11 @@ if (false) {(function () {
         lineStyle: function lineStyle() {
             var _this2 = this;
 
-            this.$nextTick(function () {
-                // console.log(this.$refs.toast.getBoundingClientRect())
-                if (!_this2.autoClose) {
+            if (!this.autoClose) {
+                this.$nextTick(function () {
                     _this2.$refs.line.style.height = _this2.$refs.toast.getBoundingClientRect().height + 'px';
-                }
-            });
+                });
+            }
         }
     },
     computed: {
@@ -13817,11 +13816,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].config.devtools = false;
 describe('Toast', function () {
   var Constructor = __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].extend(__WEBPACK_IMPORTED_MODULE_1__src_packages_toast_src_toast__["a" /* default */]);
   it('Toast存在', function () {
-    expect(__WEBPACK_IMPORTED_MODULE_1__src_packages_toast_src_toast__["a" /* default */]).to.be.ok;
+    expect(__WEBPACK_IMPORTED_MODULE_1__src_packages_toast_src_toast__["a" /* default */]).to.be.exist;
   });
   describe('prop', function () {
-    // this.timeout(15000)
     it('接收autoClose', function (done) {
+      var Constructor = __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].extend(__WEBPACK_IMPORTED_MODULE_1__src_packages_toast_src_toast__["a" /* default */]);
       var div = document.createElement('div');
       document.body.appendChild(div);
       var vm = new Constructor({
@@ -13829,10 +13828,41 @@ describe('Toast', function () {
           autoClose: true
         }
       }).$mount(div);
-      setTimeout(function () {
+      vm.$on('close', function () {
         expect(document.body.contains(vm.$el)).to.eq(false);
         done();
-      }, 1000);
+      });
+      // setTimeout(()=>{
+      //   expect(document.body.contains(vm.$el)).to.eq(false)
+      //   done()
+      // },1000)
+    });
+    it('接收closeButton', function () {
+      var callback = sinon.fake();
+      var vm = new Constructor({
+        propsData: {
+          autoClose: false,
+          closeButton: {
+            text: '关闭',
+            callback: callback
+          }
+        }
+      }).$mount();
+      var closeButton = vm.$el.querySelector('.vi-toast-close-button');
+      expect(closeButton.textContent.trim()).to.eq('关闭');
+      __WEBPACK_IMPORTED_MODULE_0_vue__["a" /* default */].nextTick(function () {
+        closeButton.click();
+        expect(callback).to.have.been.called;
+      });
+    });
+    it('接收position', function () {
+      var vm = new Constructor({
+        propsData: {
+          position: 'bottom'
+        }
+      }).$mount();
+      var toast = vm.$el.querySelector('.vi-toast');
+      expect(toast.classList.contains('vi-toast-bottom')).to.eq(true);
     });
   });
 });
@@ -13947,46 +13977,44 @@ var render = function() {
       "div",
       { ref: "toast", staticClass: "vi-toast", class: _vm.positionClass },
       [
-        _vm.message
-          ? _c("div", { staticClass: "vi-toast-message-wrapper" }, [
-              _c("span", { staticClass: "vi-toast-message" }, [
-                _vm._v(_vm._s(_vm.message))
-              ]),
-              _vm._v(" "),
-              !_vm.autoClose
-                ? _c("div", { ref: "line", staticClass: "vi-toast-line" })
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.icon && !_vm.autoClose
-                ? _c(
-                    "span",
-                    { staticClass: "vi-toast-icon-wrapper" },
-                    [
-                      _c("vi-icon", {
-                        staticClass: "vi-toast-icon",
-                        attrs: {
-                          viIconName: _vm.icon.name,
-                          viIconSize: _vm.icon.size
-                        },
-                        on: { click: _vm.closeToast }
-                      })
-                    ],
-                    1
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.icon && !_vm.autoClose
-                ? _c(
-                    "span",
-                    {
-                      staticClass: "vi-toast-close-button",
-                      on: { click: _vm.closeToast }
+        _c("div", { staticClass: "vi-toast-message-wrapper" }, [
+          _c("span", { staticClass: "vi-toast-message" }, [
+            _vm._v(_vm._s(_vm.message))
+          ]),
+          _vm._v(" "),
+          !this.autoClose
+            ? _c("div", { ref: "line", staticClass: "vi-toast-line" })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.icon && !_vm.closeButton.text
+            ? _c(
+                "span",
+                { staticClass: "vi-toast-icon-wrapper" },
+                [
+                  _c("vi-icon", {
+                    staticClass: "vi-toast-icon",
+                    attrs: {
+                      viIconName: _vm.icon.name,
+                      viIconSize: _vm.icon.size
                     },
-                    [_vm._v(_vm._s(_vm.closeButton.text))]
-                  )
-                : _vm._e()
-            ])
-          : _vm._e()
+                    on: { click: _vm.closeToast }
+                  })
+                ],
+                1
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.closeButton.text && !_vm.icon
+            ? _c(
+                "span",
+                {
+                  staticClass: "vi-toast-close-button",
+                  on: { click: _vm.closeToast }
+                },
+                [_vm._v(_vm._s(_vm.closeButton.text))]
+              )
+            : _vm._e()
+        ])
       ]
     )
   ])
