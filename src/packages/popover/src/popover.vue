@@ -1,6 +1,9 @@
 <template>
     <div class="vi-popover" ref="popover">
-        <div ref="contentWrapper" class="vi-popover-content" v-if="visible"
+        <div 
+        ref="contentWrapper" 
+        class="vi-popover-content" 
+        v-if="visible"
         :class="{[`vi-position-${position}`]:true}">
             <slot name="content"></slot>
         </div>
@@ -41,8 +44,6 @@ export default {
             document.body.appendChild(contentWrapper)
             const{width,height,left,top}=triggerWrapper.getBoundingClientRect()
             const {height: height2}=contentWrapper.getBoundingClientRect()
-            // console.log(height2)
-            // this.$refs.popover.style.marginTop=height2+'px'
             let positionValue={
                 top:{
                     top: top+window.scrollY,
@@ -97,22 +98,6 @@ export default {
             }
         }
     },
-    computed:{
-        openEvent(){
-            if(this.trigger==='click'){
-                return 'click'
-            }else{
-                return 'mouseenter'
-            }
-        },
-        closeEvent(){
-            if(this.trigger==='click'){
-                return 'click'
-            }else{
-                return 'mouseleave'
-            }
-        }
-    },
     mounted(){
         if(this.trigger==='click'){
             this.$refs.popover.addEventListener('click',this.onClick)
@@ -139,7 +124,6 @@ export default {
         vertical-align: top;
         position: relative;
         .vi-popover-button{
-            // margin-top:100px; 
             display: inline-block;
         }
     }
@@ -152,7 +136,6 @@ export default {
         filter: drop-shadow(0 1px 1px rgba(0,0,0,0.5));
         background: white;
         padding: 0.2em 0.2em;
-        // margin-top: 200px; 
         max-width: 16em; //有待解决自动检测高度
         word-break: break-all;
         &::before, &::after{
