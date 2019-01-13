@@ -11,8 +11,8 @@ describe('Toast',()=>{
     expect(Toast).to.be.ok
   })
   describe('prop',()=>{
-    // this.timeout(15000)
     it('接收autoClose',(done)=>{
+      const Constructor=Vue.extend(Toast)
       let div=document.createElement('div')
       document.body.appendChild(div)
       const vm =new Constructor({
@@ -20,10 +20,29 @@ describe('Toast',()=>{
           autoClose: true,
         }
       }).$mount(div)
-      setTimeout(()=>{
+      vm.$on('close',()=>{
         expect(document.body.contains(vm.$el)).to.eq(false)
         done()
-      },1000)
+      })
+      // setTimeout(()=>{
+      //   expect(document.body.contains(vm.$el)).to.eq(false)
+      //   done()
+      // },1000)
+    }) 
+    it('接收closeButton',()=>{
+      const callback=sinon.fake()
+      let div=document.createElement('div')
+      document.body.appendChild(div)
+      const vm =new Constructor({
+        propsData:{
+          closeButton:{
+            text: '关闭',
+            callback,
+          }
+        }
+      }).$mount(div)
+      let clothButton=vm.$el.querySelector('.vi-toast-close-button')
+      expect(clothButton.textContent.trim()).to.eq('关闭')
     }) 
   })
 })

@@ -3,7 +3,7 @@
         <div class="vi-toast" :class="positionClass" ref="toast">
             <div class="vi-toast-message-wrapper">
                 <span class="vi-toast-message">{{message}}</span>
-                <div class="vi-toast-line" ref="line" v-if="!autoClose"></div>
+                <div class="vi-toast-line" v-if="!this.autoClose" ref="line"></div>
                 <span v-if="icon&&!closeButton.text" class="vi-toast-icon-wrapper">
                     <vi-icon class="vi-toast-icon" :viIconName="icon.name" :viIconSize="icon.size" @click="closeToast"></vi-icon>
                 </span>
@@ -28,7 +28,8 @@ export default {
             type:Object,
             default(){
                 return{
-                    text:''
+                    text:'',
+                    callback: undefined
                 }
             }
         },
@@ -56,6 +57,9 @@ export default {
     },
     methods:{
         closeToast(){
+            if(typeof this.closeButton.callback==='function'){
+                this.closeButton.callback()
+            }
             this.$el.remove()
             this.$emit('close')
             this.$destroy()
