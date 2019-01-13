@@ -3,18 +3,20 @@
         <span class="vi-tabs-item-icon-wrapper" v-if="iconName">
             <vi-icon class="vi-tabs-item-icon" :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
         </span>
-        <span class="vi-tabs-item-slot"><slot></slot></span>
+        <span class="vi-tabs-item-slot" ref="fontColor"><slot></slot></span>
     </div>
 </template>
 
 <script>
+import Vue from 'vue'
 import Icon from '../../icon/src/icon'
 export default {
     name:'ViTabsItem',
     inject:['eventBus'],
     data(){
         return{
-            active: false
+            active: false,
+            fontColor: ''
         }
     },
     props:{
@@ -40,6 +42,16 @@ export default {
         onClick(){
             this.eventBus.$emit('update:selected',this.name,this)
         },
+        setFontColor(){
+            Vue.nextTick(()=>{
+                if(this.active&&!this.iconName){
+                    // this.$refs.font.style.background=`${this.fontColor}`
+                    this.$refs.fontColor.style.color=`${this.fontColor}`
+                }else if(!this.iconName){
+                    this.$refs.fontColor.style.color=''
+                }
+            })
+        }
     },
     computed:{
         setClass(){
@@ -52,11 +64,15 @@ export default {
     created(){
         this.eventBus.$on('update:selected',(name,vm)=>{
             if(this.name===name){
+                this.fontColor=vm.$options.parent.lineColor
                 this.active=true
+                // this.setFontColor()
             }else{
                 this.active=false
+                // this.setFontColor()
             }
-        })
+            this.setFontColor()
+        }) 
     }
 }
 </script>
