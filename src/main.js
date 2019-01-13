@@ -110,11 +110,4 @@ new Vue({
       })
     }
   },
-  mounted(){
-    // console.log(66)
-    // this.$on('update:selected',(value)=>{
-    //     console.log(22)
-    //     console.log(value)
-    // })
-  }
 })

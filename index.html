@@ -196,7 +196,7 @@
         <button @click="showToast3">点我3</button>
         <button @click="showToast4">点我4</button>
     </div> -->
-    <vi-tabs class="tabs" :selected.sync="selectedTab">
+    <!-- <vi-tabs class="tabs" :selected.sync="selectedTab">
       <vi-tabs-bar color="teal" space="around" line-color="aqua">
         <vi-tabs-item name="woman" line-color="aqua">标签1</vi-tabs-item>
         <vi-tabs-item name="finance" line-color="aqua">标签2</vi-tabs-item>
@@ -243,15 +243,15 @@
             <vi-tabs-content name="finance">标签2的内容</vi-tabs-content>
             <vi-tabs-content name="sport">标签3的内容</vi-tabs-content>
           </vi-tabs-body>
-        </vi-tabs>
-        <!-- <div class="popover" style="overflow: hidden;padding: 5px;border: 1px solid greenyellow;" @click="yyy">
+        </vi-tabs> -->
+        <div class="popover" style="padding: 50px;border: 1px solid greenyellow;">
           <vi-popover position="top">
             <template slot="content">
               <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
             </template>
             <vi-button type="primary">点击</vi-button>
           </vi-popover>
-          <vi-popover position="top">
+          <vi-popover position="bottom">
             <template slot="content">
               <div>popoverhjkfdhforiegjiiogjjjjjjjjjjjjjjkdf</div>
             </template>
@@ -269,9 +269,9 @@
             </template>
             <vi-button type="primary">点击</vi-button>
           </vi-popover>
-        </div> -->
+        </div>
 
-        <!-- <div class="popover" style="overflow: hidden;padding-top: 50px;border: 1px solid greenyellow;" @click="yyy">
+        <div class="popover" style="overflow: hidden;padding-top: 50px;border: 1px solid greenyellow;">
           <vi-popover position="bottom" trigger="hover">
             <template slot="content">
               <div>popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容popover内容</div>
@@ -297,7 +297,7 @@
             <vi-button type="primary">点击</vi-button>
           </vi-popover>
         </div>
-         -->
+        
 
          <!-- <div class="collapse" style="padding: 100px;">
            <vi-collapse :selected.sync="selectedCola">

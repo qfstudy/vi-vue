@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Button from '../src/packages/button/src/button'
-// import { equal } from 'assert';
 const expect = chai.expect
 
 Vue.config.productionTip=false

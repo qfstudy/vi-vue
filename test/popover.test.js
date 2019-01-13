@@ -32,4 +32,28 @@ describe('Popover',()=>{
       done()
     })
   })
+  xit('可以设置trigger',(done)=>{
+    Vue.component('vi-popover',Popover)
+    const div=document.createElement('div')
+    document.body.appendChild(div)
+    div.innerHTML=`
+      <vi-popover position="bottom" ref="a"> 
+        <template slot="content">
+          <div>popover内容</div>
+        </template>
+        <button>点击</button>
+      </vi-popover>
+    `
+    const vm=new Vue({
+      el: div
+    })
+    let event=new Event('mouseenter')
+    vm.$el.dispatchEvent(event)
+    vm.$nextTick(()=>{
+      const {contentWrapper}=vm.$refs.a.$refs
+      console.log(contentWrapper)
+      expect(contentWrapper).to.be.exist
+      done()
+    })
+  })
 })
