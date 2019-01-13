@@ -19,7 +19,7 @@ export default {
             type: String,
             default: 'start',
             validator(value){
-                return['end','between','around','center'].indexOf(value)>-1
+                return['start','end','between','around','center'].indexOf(value)>-1
             }
         },
         lineColor:{

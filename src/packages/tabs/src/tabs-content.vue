@@ -33,6 +33,6 @@ export default {
 
 <style lang="scss" scoped>
     .vi-tabs-content{
-        padding: 0.1em 0;        
+        padding: 0.5em 0;        
     }
 </style>

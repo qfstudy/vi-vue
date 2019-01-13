@@ -25,10 +25,11 @@ export default {
     methods:{
         checkChildren(){
             if(this.$children.length===0){
-                console && console.warn && console.warn('tabs的子组件应该是tabs-bar和tabs-body，但是你没有写子组件')
+               console.warn('tabs的子组件应该是vi-tabs-bar和vi-tabs-body')
             }
         },
         selectTab(){
+            this.checkChildren()
             this.$children.forEach((vm)=>{
                 if(vm.$options.name==='ViTabsBar'){
                     vm.$children.forEach((vmChild)=>{
@@ -42,7 +43,6 @@ export default {
         }
     },
     mounted(){
-        this.checkChildren()
         this.selectTab()
     },
 }

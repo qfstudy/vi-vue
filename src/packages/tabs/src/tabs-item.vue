@@ -1,5 +1,6 @@
 <template>
-    <div class="vi-tabs-item" :class="setClass" @click="onClick">
+    <div class="vi-tabs-item" :class="setClass" @click="onClick"
+    :data-name="name">
         <span class="vi-tabs-item-icon-wrapper" v-if="iconName">
             <vi-icon class="vi-tabs-item-icon" :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
         </span>
@@ -40,7 +41,9 @@ export default {
     
     methods:{
         onClick(){
-            this.eventBus.$emit('update:selected',this.name,this)
+            if(this.eventBus){
+                this.eventBus.$emit('update:selected',this.name,this)
+            }
         },
         setFontColor(){
             Vue.nextTick(()=>{
@@ -62,17 +65,17 @@ export default {
         }
     },
     created(){
-        this.eventBus.$on('update:selected',(name,vm)=>{
-            if(this.name===name){
-                this.fontColor=vm.$options.parent.lineColor
-                this.active=true
-                // this.setFontColor()
-            }else{
-                this.active=false
-                // this.setFontColor()
-            }
-            this.setFontColor()
-        }) 
+        if(this.eventBus){
+            this.eventBus.$on('update:selected',(name,vm)=>{
+                if(this.name===name){
+                    this.fontColor=vm.$options.parent.lineColor
+                    this.active=true
+                }else{
+                    this.active=false
+                }
+                this.setFontColor()
+            }) 
+        }
     }
 }
 </script>
