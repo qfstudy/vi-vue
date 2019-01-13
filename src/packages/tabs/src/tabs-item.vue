@@ -84,6 +84,7 @@ export default {
         padding: 0;
         margin: 0;
         padding: 0.5em 0.4em;
+        cursor: pointer;
         .vi-tabs-item-icon-wrapper{
             .vi-tabs-item-icon{
                 vertical-align: middle;
