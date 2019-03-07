@@ -44,6 +44,7 @@
 <body>
   <!-- <div style="border:1px solid blue;height: 500px;"></div> -->
   <div id="app">
+    <button disabled>按钮</button>
     <div class="icon">
       <vi-icon class="test" vi-icon-name="info" vi-icon-size="small"></vi-icon>
       <vi-icon vi-icon-name="search" vi-icon-size=small></vi-icon>
@@ -53,11 +54,11 @@
 
     <div class="button">
       <vi-button >默认</vi-button>
-      <vi-button type="default">默认样式</vi-button>
+      <vi-button >默认样式</vi-button>
       <vi-button type="primary" icon-name="upload" >主要按钮</vi-button>
-      <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle"></vi-button>
-      <vi-button type="primary" icon-name="upload" icon-position="right">主要按钮</vi-button>
-      <vi-button type="primary" icon-name="upload" icon-size="medium" circle="circle" disabled="disabled"></vi-button>
+      <vi-button type="primary" icon-name="upload" icon-size="medium" circle></vi-button>
+      <vi-button type="primary" icon-name="upload" icon-position="right" disabled>主要按钮</vi-button>
+      <vi-button type="primary" icon-name="upload" icon-size="medium" circle disabled></vi-button>
     </div>
 
     <div class="buttonGroup">

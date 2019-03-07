@@ -1,5 +1,5 @@
 <template>
-    <button @click="handleClick" class="vi-button" :disabled=disabled :class=buttonClass>
+    <button @click="handleClick" class="vi-button" :disabled="disabled" :class=buttonClass>
         <span class="vi-button-wrapper" :class=wrapperClass>
             <span v-if="iconName" class="vi-button-icon">
                 <vi-icon :viIconName="iconName" :viIconSize="iconSize"></vi-icon>
@@ -10,7 +10,7 @@
         </span>
     </button>
 </template>
-
+ 
 <script>
 import Icon from '../../icon/src/icon'
 export default {
@@ -21,10 +21,8 @@ export default {
     props:{
         type:{
             type: String,
-            default:'default',
             validator (value) {
                 return [
-                    'default',
                     'primary',
                     'success',
                     'info',
@@ -34,7 +32,7 @@ export default {
             }
         },
         iconName:{
-            type:String,
+            type:String
         },
         iconSize:{
             type:String,
@@ -51,10 +49,10 @@ export default {
             }
         },
         circle:{
-            type: String
+            type: Boolean
         },
         disabled:{
-            type: String,
+            type: Boolean
         }
     },
     methods: {
@@ -66,8 +64,8 @@ export default {
         buttonClass(){
             return {
                 [`vi-button-${this.type}`]:this.type,
-                [`vi-button-${this.disabled}`]:this.disabled,
-                [`vi-button-${this.circle}`]:this.circle
+                [`vi-button-disabled`]:this.disabled,
+                [`vi-button-circle`]:this.circle
             }
         },
         wrapperClass(){
