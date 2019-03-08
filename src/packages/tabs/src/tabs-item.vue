@@ -20,6 +20,9 @@ export default {
             fontColor: ''
         }
     },
+    components:{
+        viIcon: Icon
+    },
     props:{
         name:{
             type:String|Number,
@@ -27,6 +30,7 @@ export default {
         },
         position:{
             type: String,
+            default: 'left',
             validator(value){
                 return['right','top'].indexOf(value)>-1
             }
@@ -36,6 +40,7 @@ export default {
         },
         iconSize:{
             type: String,
+            default: "small"
         }
     },
     
