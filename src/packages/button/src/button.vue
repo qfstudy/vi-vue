@@ -117,7 +117,6 @@ export default {
                     padding-left: 0.2em;
                 }
             }
-            
         }
         
         &.vi-button-primary{
